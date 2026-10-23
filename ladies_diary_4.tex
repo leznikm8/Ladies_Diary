@@ -1,0 +1,531 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[british]{babel}
+\usepackage[a4paper,margin=2.3cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc,angles,quotes,patterns}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{bandgreen}{RGB}{46,139,87}
+\definecolor{bandblue}{RGB}{30,100,190}
+\definecolor{bandamber}{RGB}{220,140,20}
+\definecolor{bandpink}{RGB}{210,70,140}
+\definecolor{bandpurple}{RGB}{110,50,160}
+
+\newcounter{prob}
+% \prob{label}{title}{source}
+\newcommand{\prob}[3]{\par\bigskip\refstepcounter{prob}\label{#1}%
+  \noindent\textbf{\theprob.\ #2}\hfill{\small\textit{#3}}\par\nopagebreak\smallskip}
+\newcommand{\ans}[2]{\par\smallskip\noindent\textbf{\ref{#1}.}\ #2}
+
+\newcommand{\band}[3]{%
+  \clearpage
+  \begin{tcolorbox}[colback=#1!12,colframe=#1,boxrule=1pt,arc=2pt]
+  {\Large\bfseries\color{#1} #2}\hfill{\large #3}
+  \end{tcolorbox}}
+
+\newtcolorbox{diarynote}[1]{colback=black!4,colframe=black!45,boxrule=0.6pt,
+  arc=2pt,fonttitle=\bfseries\small,title={#1},fontupper=\small}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{3cm}
+{\Huge\bfseries The Ladies' Diary\par}
+\vspace{0.4cm}
+{\LARGE Fourth book\par}
+\vspace{0.8cm}
+{\Large Forty-two problems, 1777--1802,\\ for readers from five to seventeen\par}
+\vspace{2cm}
+{\large\itshape Turn down a page i' th' Almanac,\\
+The corner doubling to the back;\\
+The crease must be a minima;\\
+But mind you use no algebra.\par}
+\vspace{0.3cm}
+{\small George Beck, question 827\par}
+\vfill
+{\large Working draft\par}
+\end{titlepage}
+
+\section*{A word before the problems}
+
+In 1786 a schoolboy at Harleston, Master W.~Gooch, sent the Diary a question about two
+circles, one inside the other. Two answers were printed. One came from ``Amicus''. The
+other came from a young teacher at Kendal called John Dalton, who would later give
+chemistry its atomic theory. In the same years a ``Master John Brinkley, at Harleston''
+set a question of his own. A John Brinkley who went to school at Harleston became the
+first Astronomer Royal for Ireland.
+
+This booklet takes forty-two problems from the third volume of Thomas Leybourn's
+collection of 1817. It covers questions 699 to 1088, set from 1776 and answered from
+1777 to 1802. Charles Hutton edited the Diary through all those years. Leybourn himself
+appears in this volume as a reader, at North Shields: he answers a prize question in
+1793 and a question about a circle in a square in 1790.
+
+The women are fewer still. Only two set questions under their own names: Miss Nancy
+Mason of Clapham, three times, and Miss Sarah Cowen, twice. Five questions in nearly
+four hundred is about one in eighty.\footnote{By the same count, the first volume gives
+about one question in thirty from a woman (about one in ten in 1709--1724, and none
+after 1724), the second about one in sixty and the fourth about one in two hundred.
+The second volume's ten questions signed ``Miss Ann Nicholls'' are left out of these
+counts: Leybourn's index gives them to William Wales.} More women appear as solvers. Miss Betty Claxton of
+Benwell, near Newcastle, gave the first printed answer to a question about a window
+and a brick wall. Miss Maria Middleton, of Eden near Durham, answered at least four
+questions, among them problem~\ref{u-altitudes} in this booklet. Miss M.~Castieau of Shropshire answered one of
+Miss Cowen's.
+
+The volume also holds the Diary for 1780, the issue in which the young William Herschel
+answered the prize question. A separate booklet, \textit{The Ladies' Diary for 1780},
+takes ten problems from that issue, so they are not repeated here.
+
+\subsection*{How to read the labels}
+
+\textit{Q984} means question~984 in Leybourn's volume~III, in modern words.
+\textit{After Q984} means the problem has been retold. It may have new numbers for
+younger readers, or metres and hectares in place of feet, chains and acres, or pounds
+and pence in place of guineas and shillings. The idea is always the Diary's. Where a
+retelling changes the answer, the answer given is for the retelling.
+
+\subsection*{The bands}
+
+\begin{center}
+\begin{tabular}{>{\bfseries}l l l r}
+\color{bandgreen}Green  & ages 5--8   & shapes and letters                     & 2\\
+\color{bandblue}Blue    & ages 8--11  & times, taps and turned-round numbers   & 3\\
+\color{bandamber}Amber  & ages 11--14 & first algebra, square roots            & 6\\
+\color{bandpink}Pink    & ages 14--16 & GCSE: Pythagoras, trigonometry, money  & 14\\
+\color{bandpurple}Purple & ages 16--17 & A-level: proof, optimisation, series  & 17\\
+\end{tabular}
+\end{center}
+
+Answers are at the back. When the Diary or its readers went wrong, a small grey box
+says so.
+
+\subsection*{How this edition was made}
+This edition was prepared with the assistance of Claude, an AI model made by Anthropic.
+Under the editor's direction, Claude drafted the retellings, solutions, notes and
+introduction, recomputed every answer, worked from the Internet Archive's machine-read
+text of the source, and typeset the text. Selection, editorial decisions and final
+responsibility for the text are the editor's.
+
+%================ GREEN ================
+\band{bandgreen}{Green}{ages 5--8}
+
+\prob{g1}{Tiles round a point}{after Q829, by Plus Minus}
+Cut out some paper triangles with three equal sides, some squares, some shapes with five
+equal sides and some with six. Using only one kind of shape at a time, can you fit
+copies of it together round a point with no gaps and no overlaps? Which shapes work?
+
+\prob{g2}{A secret word}{after Q863, by J.~Hunt of Stony Stratford}
+Number the letters: A is 1, B is 2, C is 3, and so on. A word that a lady might wear on
+her head is 3, 1, 16. What is the word?
+
+%================ BLUE ================
+\band{bandblue}{Blue}{ages 8--11}
+
+\prob{b1}{Three numbers and a birthday}{after Q954, by Thomas Nield of Hawarden}
+Three numbers each go up by multiplying by 4: the middle one is 4 times the first, and
+the last is 4 times the middle one. Multiplied together, they make 4,096. The middle
+number doubled is the teacher's age. Half the first is the month of his birthday, and a
+quarter of the last is the day. How old is he, and when is his birthday?
+
+\prob{b2}{Two taps}{Q934, by John Ryley of Leeds}
+One tap fills a cistern in 20 minutes. Another empties it in 45 minutes. The cistern is
+empty and both taps are turned on. How long does it take to fill?
+
+\prob{b3}{The two lessons}{Q977, by the Rev.~L.~Evans}
+In church one day, the number of the chapter read for the first lesson was a two-digit
+number. The second lesson's chapter had the same two digits the other way round. The
+square of the first, take away the square of the second, is 1,485. Find the two chapters.
+\textit{Hint: try pairs like 41 and 14, 52 and 25, and so on.}
+
+%================ AMBER ================
+\band{bandamber}{Amber}{ages 11--14}
+
+\prob{a-cap}{An ornament for the fair}{Q863, by J.~Hunt of Stony Stratford}
+Three letters have places $x$, $y$ and $z$ in the alphabet, where
+$x + y + z = 20$, $x + 2y + 3z = 53$ and $x^2 + y^2 + z^2 = 266$. They spell, in order,
+``an ornament greatly becoming the fair''. What is it?
+
+\prob{a-cube}{The marble cube}{Q902, by John Farey of London}
+A cube of marble has a side of a whole number of centimetres, written with two digits.
+Its surface area is 864 times the sum of the digits, and its volume is 576 times the
+square of the sum of the digits. How big is it?
+
+\prob{a-merchant}{The merchant's seven years}{after Q895, by N.~Hoskins}
+A merchant starts with a sum of money. After 3 years he has doubled it. In the 4th year
+he gains the square root of that doubled sum, and \pounds10 more. In the last 3 years his
+money is squared. At the end of the 7 years he has \pounds62,500. What did he start with?
+
+\prob{a-squares}{Five sons and a square field}{after Q1003, by Miss Nancy Mason of Clapham}
+A father leaves a square field of 30 hectares to his five sons. The eldest gets 8
+hectares, the next 7, then 6, then 5, and the youngest 4. Each share except the
+youngest's is a strip of even width all round a square, with the next share inside it,
+until the youngest has the square in the middle. Find the side of each square and the
+width of each strip.
+
+\prob{a-age}{Miss Mason's age}{Q984, by Miss Nancy Mason of Clapham}
+On 1 January 1795 she was $x$ years, $y$ months and $z$ days old, where
+$xy + z = 238$, $xz + y = 158$ and $x + y + z = 39$. How old was she?
+
+\prob{a-field}{Two ways to grow a field}{after Q879, by Thomas Nield}
+A rectangular field gains 430\,m$^2$ if 2\,m is added to its breadth and 5\,m to its
+length. It gains 445\,m$^2$ if 5\,m is added to the breadth and 2\,m to the length. Find its
+length and breadth.
+
+%================ PINK ================
+\band{bandpink}{Pink}{ages 14--16}
+
+\prob{p-gooch}{One circle inside another}{Q850, by Master W.~Gooch of Harleston School}
+One circle lies inside another. Along the diameter of the larger circle through both
+centres, the gaps between the two circles are 5 and 21. Along the diameter of the larger
+circle at right angles to it, the two gaps are each 15. Find the diameters of the
+circles.
+
+\prob{p-ladder}{The house of three storeys}{after Q852, by Stephen Ogle}
+A house has three storeys of equal height. A ladder with its foot 20\,m from the house
+just reaches the top. A ladder 12\,m shorter, from the same point, just reaches the top
+of the second storey. How tall is the house?
+
+\prob{p-pond}{The pond in the garden}{after Q986, by Robert Wilkinson of North Shields}
+A rectangular garden is 80\,m by 60\,m. A pond in it has four corners, each lying on a
+diagonal of the garden, between a corner of the garden and the centre. The four corners
+of the pond are 20, 25, 40 and 45\,m from the nearest corners of the garden, in order
+round. Find the area of the pond.
+
+\prob{p-window}{The window and the wall}{after Q909, by J.~Fildes of Liverpool}
+I stand in a room facing a window whose sill is level with my eye. Through the window I
+can see 3.5\,m of the wall across the street. When I walk 5\,m nearer the window, I can see
+6\,m of that wall. The wall is 12\,m beyond the window. How tall is the window?
+
+\prob{p-seat}{The seat round the tree}{after Q1050, by James Wilding of High Ercall}
+A hexagonal seat is to be built round a tree, from one plank 5\,m long and 28\,cm wide.
+Each of the six pieces is a trapezium with angles of $60^\circ$ and $120^\circ$, cut from
+the plank with no waste by turning alternate pieces round. How long are the inner and
+outer edges of each piece?
+
+\prob{p-cowen}{Tangent three times sine}{Q1059, by Miss Sarah Cowen}
+In a circle of radius 10, an arc is such that its tangent is three times its sine. How
+long is the arc?
+
+\prob{p-walk}{The walk round the triangle}{after Q973, by R.~Mountjoy}
+An equilateral triangle of grass has an area of 10,000\,m$^2$. A path of the same width
+all the way round it has the same area as the circle that fits inside the triangle.
+How wide is the path? Take the outer edge of the path to be a larger equilateral triangle.
+
+\prob{p-wall}{Wall and circle}{after Q713, by John Shadgett}
+A field is a right-angled triangle whose shorter sides are in the ratio $3 : 2$. A wall
+2\,m high runs all round it. The area of one side of the wall equals the area of the
+circle inscribed in the field. Find the sides of the field.
+
+\prob{p-bet}{Five coins, four throws}{after Q899, by Alexander Rowe}
+$A$ bets $B$ \pounds5.25 to 50p that in four throws of five coins, they will never all come up
+the same, all heads or all tails. Who has the better of the bet, and by how much?
+
+\prob{p-drain}{Draining the farm}{after Q970, by Thomas Woolston}
+A farmer borrows \pounds50 at 5 per cent compound interest to drain his land. The drained
+land brings in an extra \pounds5 a year, which he pays off the loan at the end of each year.
+How long does it take to clear the loan?
+
+\prob{p-annuity}{Paying off a debt}{after Q893, by James Ashton of Harrington}
+A debt of \pounds900 is charged interest at 4.5 per cent a year, compound. It is paid off by
+\pounds83.50 at the end of each year. How many years does it take?
+
+\prob{p-debt}{The industrious man}{after Q955, by J.~Hartley of Fleet Street}
+A man owes \pounds250 and has saved \pounds8.25. He puts the savings in the bank at 1 per cent a
+quarter and adds 25p at the end of every quarter. How long until the savings cover the
+debt?
+
+\prob{p-sides}{Angles and an area}{after Q1001, by Newton Bosworth of Peterborough}
+A triangle has angles of $50^\circ$, $60^\circ$ and $70^\circ$, and an area of 12 hectares.
+Find its sides.
+
+\prob{p-holt}{Sum, quotient and difference of squares}{Q939, by J.~Holt of Manchester}
+Find two numbers whose sum, quotient and difference of squares are all equal.
+
+%================ PURPLE ================
+\band{bandpurple}{Purple}{ages 16--17}
+
+\prob{u-golden}{Product, difference, quotient}{Q1029, by John Hawkes of Finedon}
+Find two numbers whose product, the difference of their squares and the quotient of
+their cubes are all equal.
+
+\prob{u-tangents}{Whole-number tangents}{Q1004, by Alexander Rowe}
+Find a triangle whose three angles all have whole numbers for their tangents.
+
+\prob{u-altitudes}{Three heights}{Q1002, by John Huthersal of Rochdale}
+The three heights of a triangle, from each corner to the opposite side, are 10, 11 and
+12. Find its sides and area.
+
+\prob{u-cannonball}{A square pile of squares}{prize question, answered 1793, by Amicus}
+Add up the squares $1^2 + 2^2 + 3^2 + \cdots$. After how many terms, past the first, is
+the sum a perfect square?
+
+\prob{u-tiling}{Every way round a point}{Q829, by Plus Minus}
+In how many ways can regular polygons, not necessarily all alike, fit exactly round a
+point with no gap and no overlap? Count two arrangements as the same if they use the
+same polygons.
+
+\prob{u-euler}{Three centres in a line}{Q826, by Atticus}
+Prove that in every triangle the point where the three heights meet, the centroid and
+the centre of the circumscribed circle lie on one straight line. In what ratio does the
+centroid divide the distance between the other two?
+
+\prob{u-bisector}{The bisector and the tangent}{Q1037, by Edward Warren}
+In a triangle, the bisector of the angle at the top meets the base. Prove that the sum
+of the two sides is to their difference as the tangent of the angle between the
+bisector and the base is to the tangent of half the angle at the top.
+
+\prob{u-fold}{The shortest crease}{Q827, by George Beck}
+The bottom corner of a page is folded over so that it just touches the opposite edge of
+the page. Where should the fold start along the bottom edge to make the crease as short
+as possible? The page is wide and tall enough. The verse forbids algebra; you may use
+what you like.
+
+\prob{u-wine}{Water into wine}{after Q810, by the Rev.~John Hellins}
+A cask holds 100 litres of wine. A hole is made, and the cask leaks 1 litre of mixture
+every 10 seconds, while water runs in to keep it full. The mixture stays evenly mixed.
+How much wine is left after one hour?
+
+\prob{u-timber}{The quarter-girt rule}{Q719, by John Fatherley}
+Timber was measured by multiplying the length by the square of a quarter of the mean
+girth. A tapering tree is 32\,ft long, with girth 14\,ft at one end and 2\,ft at the
+other, so it measures $32\times2^2 = 128$ cubic feet. Cut it into 2 equal lengths and
+measure each the same way, then into 4, then 8, and so on. What does the total approach?
+How many equal parts are needed before the total reaches $151\tfrac12$ cubic feet?
+
+\prob{u-trees}{The oak and the elm}{Q1000, by W.~Pearson of North Shields}
+An oak and an elm together are 80\,ft tall. The cube of the oak's height, added to 20
+times the square of the elm's, is as small as it can be. How tall is each tree?
+
+\prob{u-quartic}{A quartic by quadratics}{Q910, by Mr Hepworth of North Walsham Academy}
+Solve $4x^4 + 8x^3 - 89x^2 + 28x + 49 = 0$ using quadratic equations only.
+
+\prob{u-sin18}{The sine of eighteen degrees}{Q1072, by John Surtees}
+Emerson's \textit{Trigonometry} finds $\sin18^\circ$ from a cubic equation. Find it with a
+quadratic.
+
+\prob{u-dalton}{John Dalton's chord}{Q884, by John Dalton of Kendal}
+$AB$ is the diameter of a semicircle with centre $O$, and $OC$ is the radius at right
+angles to $AB$. A chord $BF$ cuts $OC$ at $E$. On $BF$ mark $D$ with $BD$ equal to the
+radius. Where should $F$ be for $DE\times EF$ to be as large as possible?
+
+\prob{u-chords}{Chords from one end}{Q989, by Olinthus Gregory of Yaxley}
+A semicircle on a diameter of 100 has its arc divided into a number of equal parts.
+Chords are drawn from one end of the diameter to each point of division. These chords,
+with the diameter, add up to 429.7877. Into how many parts was the arc divided, and how
+long is each chord?
+
+\prob{u-circle}{Halving a square}{after Q900, by William Hardy of Cottingham}
+A square has sides of 12\,cm. A circle has its centre at the middle of one side. How
+large must its radius be for it to cut the square into two equal areas?
+
+\prob{u-persian}{The Persian king's triangle}{after the prize question, answered 1796, by James Glenie}
+In a Persian king's palace there was said to be a triangular court with one side of
+200\,m, an area of 10,000\,m$^2$, and the cubes of the other two sides adding up to three
+times the cube of the first. Find the other two sides.
+
+%================ ANSWERS ================
+\clearpage
+\section*{Answers}
+
+\subsection*{\color{bandgreen}Green}
+\ans{g1}{Triangles (six round a point), squares (four) and six-sided shapes (three) all
+work. Five-sided shapes do not: three leave a gap and four overlap. Problem
+\ref{u-tiling} asks what happens when the shapes may be mixed.}
+\ans{g2}{CAP. The Diary's solvers agreed: ``a cap, an ornament becoming all modest
+women''.}
+
+\subsection*{\color{bandblue}Blue}
+\ans{b1}{The numbers are 4, 16 and 64. The teacher is 32, and his birthday is 16
+February. The middle number multiplied by itself three times is 4,096, so it is 16.}
+\ans{b2}{36 minutes. In 180 minutes the first tap fills 9 cisterns and the second
+empties 4, so together they fill 5. One cistern takes $180 \div 5 = 36$ minutes.}
+\ans{b3}{41 and 14: $41^2 - 14^2 = 1681 - 196 = 1485$. The Rev.~Mr Ewbank's answer added
+that the lessons were Isaiah~41 and Acts~14, and the day 14 December.}
+
+\subsection*{\color{bandamber}Amber}
+\ans{a-cap}{$x = 3$, $y = 1$, $z = 16$: CAP. Take twice the first equation from the
+second to get $z = x + 13$, and the second from three times the first to get
+$y = 7 - 2x$. Then the third becomes $6x^2 - 2x = 48$.}
+\ans{a-cube}{36\,cm. If the side is $s$ and the digit sum $d$, then $6s^2 = 864d$ and
+$s^3 = 576d^2$. Dividing, $s = 4d$, so $10a + b = 4a + 4b$ and $b = 2a$. Then $6s^2 = 864d$
+gives $a = 3$.}
+\ans{a-merchant}{\pounds112.50 (the Diary's \pounds112 10s). After 7 years he has $62{,}500 = 250^2$,
+so after 4 years he had 250. Write $t^2$ for the doubled sum: $t^2 + t + 10 = 250$, so
+$t = 15$. The doubled sum is 225.}
+\ans{a-squares}{The squares have sides $\sqrt{300{,}000} \approx 547.7$\,m,
+$\sqrt{220{,}000} \approx 469.0$\,m, $\sqrt{150{,}000} \approx 387.3$\,m, 300\,m and 200\,m,
+since the inner shares add up to 22, 15, 9 and 4 hectares. The strips are about 39.3,
+40.9, 43.6 and 50\,m wide, half the difference of neighbouring sides. The strips get
+wider as the shares get smaller. The inner squares are smaller, so a strip must be wider
+to hold its area.}
+\ans{a-age}{21 years, 11 months and 7 days. Add the first two equations:
+$(x + 1)(y + z) = 396$. The third gives $y + z = 39 - x$. So $(x + 1)(39 - x) = 396$,
+which gives $x = 21$ or $x = 17$. With $x = 17$ the months come out at $13\tfrac12$, which
+is impossible.}
+\ans{a-field}{The breadth is $58\tfrac47$\,m and the length $63\tfrac47$\,m. Expanding
+gives $5b + 2l = 420$ and $2b + 5l = 435$. Subtracting, $l = b + 5$.}
+
+\subsection*{\color{bandpink}Pink}
+\ans{p-gooch}{60 and 34: radii 30 and 17, with centres 8 apart. If the radii are $R$ and
+$r$ and the centres are $d$ apart, then $R - d - r = 5$ and $R + d - r = 21$, so $d = 8$
+and $R - r = 13$. On the other diameter the small circle is $\sqrt{r^2 - 64}$ from the
+centre of the large one, so $R - \sqrt{r^2 - 64} = 15$. One printed answer was by
+Amicus, and another by Mr John Dalton of Kendal.}
+\ans{p-ladder}{About 41.70\,m. Call the shorter ladder $x$. Then
+$(x + 12)^2 - 400 = \tfrac94(x^2 - 400)$, which gives $5x^2 - 96x = 2576$, so
+$x \approx 34.24$. The height is $\tfrac32\sqrt{x^2 - 400}$. The solvers' working uses
+the 20 of this retelling. The machine-read text of the question says 90.}
+\ans{p-pond}{576\,m$^2$. Each diagonal of the garden is 100\,m. So the pond's diagonals
+are $100 - 20 - 40 = 40$ and $100 - 25 - 45 = 30$. They cross at the angle between the
+garden's diagonals, whose sine is $2\times80\times60/100^2 = 0.96$. The area is
+$\tfrac12\times40\times30\times0.96$. In the Diary's yards the answer was 960 square
+yards.}
+\ans{p-window}{1.5\,m. Let my first distance from the window be $d$ and its height $h$.
+By similar triangles, $h(d + 12) = 3.5d$ and $h(d + 7) = 6(d - 5)$. Dividing one by the
+other gives $d^2 + 7d - 144 = 0$, so $d = 9$. The first answer printed in the Diary
+was by Miss Betty Claxton of Benwell, near Newcastle upon Tyne.}
+\ans{p-seat}{About 67.2\,cm on the inside and 99.5\,cm on the outside. Each piece is
+$2w/\sqrt3$ longer on the outside than the inside, where $w$ is the width of the plank.
+Turned alternately, six pieces use six times the average of the two edges. So
+$\text{inner} + w/\sqrt3 = 500/6$\,cm.}
+\ans{p-cowen}{About 12.31. Tangent over sine is $1/\cos$, so $\cos\theta = \tfrac13$,
+$\theta \approx 70.53^\circ$ or 1.2310 radians. The arc is $10\theta$. Among the
+solvers was Miss M.~Castieau of Shropshire.}
+\ans{p-walk}{About 11.70\,m. Areas of similar triangles go with the squares of their
+sizes. The inscribed circle covers $\pi/(3\sqrt3) \approx 60.5$ per cent of the triangle,
+so the outer triangle is about 1.605 times the area of the inner one. Its inscribed
+circle is then $\sqrt{1.605}$ times as wide. The breadth of the path is the difference
+of the two inscribed radii. Mr T.~S.~Evans also solved it with the corners of the path
+rounded off. That makes it a little wider, about 12.23\,m.}
+\ans{p-wall}{About 22.5, 33.8 and 40.6\,m. With legs $3k$ and $2k$, the hypotenuse is
+$\sqrt{13}\,k$ and the inscribed circle has diameter $(5 - \sqrt{13})k$. So
+$\tfrac\pi4(5 - \sqrt{13})^2k^2 = 2(5 + \sqrt{13})k$. The Diary's version, with a wall
+6\,ft high, gives 67.6, 101.4 and 121.9\,ft.}
+\ans{p-bet}{$B$ has the better of it. In one throw, all five coins match with probability
+$\tfrac2{32} = \tfrac1{16}$. They fail to match in all four throws with probability
+$\left(\tfrac{15}{16}\right)^4 = \tfrac{50625}{65536}$. So $A$'s true odds are about 3.4 to 1,
+but he has laid 10.5 to 1. His share of the \pounds5.75 at stake is worth
+$\tfrac{50625}{65536}\times5.75 \approx$ \pounds4.44, against the \pounds5.25 he put up. He loses
+about 81p a bet, the Diary's 16s 2d.}
+\ans{p-drain}{About 14.2 years. The loan grows by 5 per cent, which is \pounds2.50 in the first
+year. The \pounds5 paid off each year is twice that, and the payment does not grow. After $n$
+years the loan is cleared when $50\times1.05^n = 5\times\tfrac{1.05^n - 1}{0.05}$, that
+is, $1.05^n = 2$. The Rev.~L.~Evans pointed out that the question can be read two ways,
+and he solved both.}
+\ans{p-annuity}{About 15.1 years. We need
+$900 = 83.50\times\tfrac{1 - 1.045^{-n}}{0.045}$, so $1.045^{-n} = 1 - 40.5/83.5$.}
+\ans{p-debt}{About 212 quarters, or 53 years. After $n$ quarters he has
+$8.25\times1.01^n + 0.25\times\tfrac{1.01^n - 1}{0.01}$. Mr G.~H.'s answer suspected the
+industrious man to be ``no other than poor honest John Bull''. With millions in place of
+pounds, these were the figures of the national debt.}
+\ans{p-sides}{About 475\,m, 537\,m and 583\,m, opposite the angles of $50^\circ$, $60^\circ$
+and $70^\circ$. The area of a triangle is $2R^2\sin A\sin B\sin C$, where $R$ is the radius
+of the circumscribed circle, and each side is $2R$ times the sine of the opposite angle.}
+\ans{p-holt}{$1 + \tfrac{\sqrt2}{2} \approx 1.707$ and $\tfrac{\sqrt2}{2} \approx 0.707$.
+Since $x^2 - y^2 = x + y$, we get $x - y = 1$. Then $\tfrac xy = x + y$ gives
+$y + 1 = 2y^2 + y$, so $y^2 = \tfrac12$. All three quantities equal $1 + \sqrt2$.}
+
+\subsection*{\color{bandpurple}Purple}
+\ans{u-golden}{The golden ratio and its square: $y = \tfrac{1+\sqrt5}{2} \approx 1.618$
+and $x = y^2 \approx 2.618$. Let $r = x/y$. The product equals the difference of squares
+when $r = r^2 - 1$, so $r$ is the golden ratio. The product equals $r^3$ when $y = r$.
+All three quantities are then $r^3 = 2 + \sqrt5$.}
+\ans{u-tangents}{The tangents are 1, 2 and 3, and the angles $45^\circ$,
+$63^\circ26'$ and $71^\circ34'$. In any triangle,
+$\tan A + \tan B + \tan C = \tan A\tan B\tan C$. With whole numbers and the smallest equal
+to 1, this gives $1 + y + z = yz$, so $(y - 1)(z - 1) = 2$.}
+\ans{u-altitudes}{The sides are about 14.06, 12.78 and 11.71, and the area about 70.28.
+Each side is twice the area divided by its height, so the sides are in the ratio
+$\tfrac1{10} : \tfrac1{11} : \tfrac1{12}$. Find the area of a triangle with those sides by
+Heron's formula and scale it. Answers came from, among others, Miss Maria Middleton of
+Eden, near Durham.}
+\ans{u-cannonball}{24 terms: $1^2 + 2^2 + \dots + 24^2 = 4900 = 70^2$. The answer printed
+was by Mr Thomas Leybourn, who later collected these volumes. The sum is
+$\tfrac16n(n+1)(2n+1)$, and he made each factor a square. In 1875 \'Edouard Lucas asked
+whether a square pyramid of cannonballs could ever be laid out flat as a square apart
+from this case. G.~N.~Watson proved in 1918 that 24 is the only answer.}
+\ans{u-tiling}{17 ways. Three polygons can meet in ten ways: $(3,7,42)$, $(3,8,24)$,
+$(3,9,18)$, $(3,10,15)$, $(3,12,12)$, $(4,5,20)$, $(4,6,12)$, $(4,8,8)$, $(5,5,10)$ and
+$(6,6,6)$. Four can meet in four: $(3,3,4,12)$, $(3,3,6,6)$, $(3,4,4,6)$ and $(4,4,4,4)$.
+Five can meet in two: $(3,3,3,4,4)$ and $(3,3,3,3,6)$. Six triangles make one more. Each
+is a whole-number solution of the angle sum $\sum\left(180 - \tfrac{360}{n}\right) = 360$.
+Counted with the order round the point, there are 21. Only some of them extend to a whole
+floor.}
+\ans{u-euler}{Put the centre $O$ of the circumscribed circle at the origin, and let the
+corners be the vectors $\mathbf a, \mathbf b, \mathbf c$, all of the same length. The
+point $\mathbf h = \mathbf a + \mathbf b + \mathbf c$ satisfies
+$(\mathbf h - \mathbf a)\cdot(\mathbf b - \mathbf c) = |\mathbf b|^2 - |\mathbf c|^2 = 0$,
+so it lies on every height: it is the orthocentre. The centroid is
+$\tfrac13(\mathbf a + \mathbf b + \mathbf c) = \tfrac13\mathbf h$. So the three points lie
+on a line, and the centroid divides the distance from $O$ to the orthocentre in the ratio
+$1 : 2$. The line is now called the Euler line.}
+\ans{u-bisector}{Let the angles be $A$ at the top and $B$, $C$ at the base, with $C > B$.
+The bisector meets the base at an angle $\theta$ with $\tan\theta =
+\cot\tfrac{C-B}{2}$, since $\theta = B + \tfrac A2 = 90^\circ - \tfrac{C-B}{2}$. The tangent
+rule gives
+\[
+\frac{b + c}{c - b} = \frac{\tan\tfrac{C+B}{2}}{\tan\tfrac{C-B}{2}}
+= \frac{\cot\tfrac A2}{\tan\tfrac{C-B}{2}} = \frac{\tan\theta}{\tan\tfrac A2}.
+\]}
+\ans{u-fold}{Start the fold three-quarters of the page's width from the corner. The
+crease is then $\tfrac{3\sqrt3}{4}$ of the width, about 1.30 times. If the fold starts $x$
+from the corner on a page of width $w$, the crease has length $L$ with
+$L^2 = 2x^3/(2x - w)$, which is least at $x = \tfrac34w$. Amicus's construction in the
+Diary, without algebra as the verse demands, reaches the same point.}
+\ans{u-wine}{About 2.73 litres. In a short time $\delta t$ seconds, $\delta t/10$ litres
+of mixture leave, carrying a fraction $\tfrac{w}{100}$ of wine. So
+$\tfrac{dw}{dt} = -\tfrac{w}{1000}$ and $w = 100e^{-t/1000}$. After 3,600 seconds,
+$w = 100e^{-3.6}$. James Young's answer added that the wine never runs out entirely.}
+\ans{u-timber}{The total approaches 152 cubic feet. With $n$ equal parts the total is
+$152 - 24/n^2$. It is 146 for 2 parts, 150.5 for 4 and 151.625 for 8. Seven parts are
+the fewest that reach $151\tfrac12$, since 6 give only $151\tfrac13$. The limit is the
+true volume of the tapering tree, measured in the same quarter-girt units.}
+\ans{u-trees}{The oak is $26\tfrac23$\,ft tall and the elm $53\tfrac13$\,ft. Minimise
+$a^3 + 20(80 - a)^2$: the derivative gives $3a^2 + 40a - 3200 = 0$.}
+\ans{u-quartic}{$x = 1$, $x = \tfrac72$ and $x = \tfrac{-13\pm\sqrt{113}}{4}$, about
+$-0.592$ and $-5.908$. Divide by $x^2$ and put $u = 2x + \tfrac7x$. Then
+$u^2 = 4x^2 + 28 + \tfrac{49}{x^2}$, and the equation becomes $u^2 + 4u - 117 = 0$, so
+$u = 9$ or $u = -13$.}
+\ans{u-sin18}{$\sin18^\circ = \tfrac{\sqrt5 - 1}{4}$. With $\theta = 18^\circ$, $2\theta$
+and $3\theta$ add up to $90^\circ$, so $\sin2\theta = \cos3\theta$. That is
+$2\sin\theta\cos\theta = 4\cos^3\theta - 3\cos\theta$. Divide by $\cos\theta$:
+$4\sin^2\theta + 2\sin\theta - 1 = 0$.}
+\ans{u-dalton}{When the angle $BEO$ has sine about 0.8351, that is about $56^\circ38'$.
+Then $BE \approx 1.197$ times the radius, and the product is about 0.0933 times the square
+of the radius. With radius 1 and $x = \sin\angle BEO$: $BE = 1/x$, $BF = 2x$, so
+$DE = \tfrac1x - 1$ and $EF = 2x - \tfrac1x$. Maximise the product. John Cullyer's answer
+in the Diary reaches the same angle.}
+\ans{u-chords}{Six parts. The chords are $100\sin15^\circ \approx 25.88$, $100\sin30^\circ
+= 50$, $100\sin45^\circ \approx 70.71$, $100\sin60^\circ \approx 86.60$ and
+$100\sin75^\circ \approx 96.59$, with the diameter 100. Newton Bosworth's answer used a
+theorem from Hutton's \textit{Tables}.}
+\ans{u-circle}{About 6.99\,cm, just under 7. The circle must cover 72\,cm$^2$ of the
+square. That is a half-disc of area $\tfrac12\pi R^2$, less the two small pieces of it
+that stick out past the square's sides, solved by trial. Thomas Leybourn's answer, from
+North Shields, did exactly that by ``double position'', starting from 7.}
+\ans{u-persian}{About 281.65\,m and 118.35\,m, that is $200\left(1\pm\tfrac1{\sqrt6}\right)$.
+The height on the given side is 100\,m, from the area. The two unknown sides turn out to
+add up to exactly 400, twice the given side. Then
+$a^3 + b^3 = (a + b)^3 - 3ab(a + b)$ gives $ab = \tfrac{100{,}000}{3}$, and
+$a, b = 200 \pm \sqrt{40{,}000 - ab}$. Glenie, who set the question, noted these
+corollaries himself.}
+
+\begin{diarynote}{When the Diary was wrong}
+\textbf{Problem~\ref{u-tiling}.} Plus Minus's count of 17 is right, but two entries in
+his printed list do not fit. They are 5, 6, 10, whose angles add to $372^\circ$, and
+3, 3, 3, 4, 5, which add to $378^\circ$. They should read 5, 5, 10 and 3, 3, 3, 4, 4.
+They may be misprints rather than slips.
+\end{diarynote}
+
+\end{document}

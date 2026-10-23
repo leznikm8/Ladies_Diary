@@ -1,0 +1,368 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[british]{babel}
+\usepackage[a4paper,margin=2.3cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc,angles,quotes,patterns}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{bandgreen}{RGB}{46,139,87}
+\definecolor{bandblue}{RGB}{30,100,190}
+\definecolor{bandamber}{RGB}{220,140,20}
+\definecolor{bandpink}{RGB}{210,70,140}
+\definecolor{bandpurple}{RGB}{110,50,160}
+
+\newcounter{prob}
+% \prob{label}{title}{source}
+\newcommand{\prob}[3]{\par\bigskip\refstepcounter{prob}\label{#1}%
+  \noindent\textbf{\theprob.\ #2}\hfill{\small\textit{#3}}\par\nopagebreak\smallskip}
+\newcommand{\ans}[2]{\par\smallskip\noindent\textbf{\ref{#1}.}\ #2}
+
+\newcommand{\band}[3]{%
+  \clearpage
+  \begin{tcolorbox}[colback=#1!12,colframe=#1,boxrule=1pt,arc=2pt]
+  {\Large\bfseries\color{#1} #2}\hfill{\large #3}
+  \end{tcolorbox}}
+
+\newtcolorbox{diarynote}[1]{colback=black!4,colframe=black!45,boxrule=0.6pt,
+  arc=2pt,fonttitle=\bfseries\small,title={#1},fontupper=\small}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+\definecolor{bandgrey}{RGB}{85,85,85}
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{3cm}
+{\Huge\bfseries The Ladies' Diary\par}
+\vspace{0.4cm}
+{\LARGE The last years, 1835--1840\par}
+\vspace{0.8cm}
+{\Large Twenty problems from the final six issues\par}
+\vspace{2cm}
+{\large\itshape Virtue and taste, with female softness join'd,\\
+All that subdues and captivates mankind,\\
+In Britain's matchless fair resplendent shine.\par}
+\vspace{0.3cm}
+{\small The Diary's title page, 1835\par}
+\vfill
+{\large Working draft\par}
+\end{titlepage}
+
+\section*{A word before the problems}
+
+Leybourn's collection stops in 1816. The Diary did not. It ran for another
+twenty-four years, under Olinthus Gregory of the Royal Military Academy, until the
+Stationers' Company merged it with \textit{The Gentleman's Diary} in 1841. None of those
+later questions is in Leybourn.
+
+This booklet is made from one bound volume of the last six issues, for 1835 to 1840, the
+132nd to the 137th almanacs ``published of this kind''. The copy is Harvard College
+Library's, digitised by HathiTrust, and came to Harvard from the estate of a George
+Eastwood. A Mr Geo.\ Eastwood of Dewsbury is among the solvers in 1835; they may be the
+same man.
+
+Each issue printed the answers to the previous year's fifteen questions and set fifteen
+new ones, followed by an appendix of ``curious and valuable mathematical papers''. So a
+single issue never holds a question together with its answer. The questions in this
+volume run from 1584 to 1673. The answers to the last fifteen, set in 1840, were printed
+in 1841 in \textit{The Lady's and Gentleman's Diary}, which we do not have; for those, and
+for any answer we could not read, the answers here are our own.
+
+By now the solvers were schoolmasters, surveyors, cadets and assistants at the Nautical
+Almanac Office, with W.~S.~B.~Woolhouse and William Rutherford of Woolwich answering
+almost everything. They came from further afield, too. Two questions in 1839 were set by
+``M.~Z.~Ameen Bey, a scientific Egyptian now studying in England'', who appears in 1840 as
+``Colonel Ameen Bey, Turkish Artillery''. Professor Charles Gill of St Paul's College, New
+York, sent answers and a question.
+
+And there were still women. A ``Miss L.~L.'' set one question in 1834 and another in 1836
+(problem~\ref{z-equator}), and her name appears among the solvers again and again in 1837.
+A Mary Forster answered in 1837 too. In the enigmas and verse, women are everywhere:
+Winifred Waverton of Lambeth, Mrs and Miss Richardson of Vauxhall, Helen Ogden of Oldham,
+Frances Plumbe of Bromley, Jane Sherwill of Plympton and many more.
+
+\subsection*{How to read the labels}
+
+\textit{Q1608} is the Diary's own question number. \textit{After Q1669} means the question has
+been retold, or its general data replaced by a worked case; the answer at the back is then
+for the retelling. The bands are those of the first book in this series. These issues have
+nothing young enough for Green, and their weight is in Purple and beyond.
+
+\subsection*{How this edition was made}
+This edition was prepared with the assistance of Claude, an AI model made by Anthropic.
+Under the editor's direction, Claude worked from HathiTrust's machine-read text of the
+Harvard copy. It drafted the retellings, solutions, notes and introduction, recomputed
+every answer, and typeset the text. Selection, editorial decisions and final
+responsibility for the text are the editor's.
+
+%================ BLUE ================
+\band{bandblue}{Blue}{ages 8--11}
+
+\prob{z-diagonals}{Counting diagonals}{Q1629, from Gill's \textit{Mathematical Miscellany}}
+How many diagonals can be drawn in a hexagon? In an octagon? Find a rule for a figure
+with $n$ sides.
+
+%================ AMBER ================
+\band{bandamber}{Amber}{ages 11--14}
+
+\prob{z-shilling}{The shilling on the chessboard}{Q1597, by W.~F.}
+A shilling is tossed and lands flat on a chessboard. The side of each square is twice the
+diameter of the shilling. What is the chance that it lies wholly inside one square,
+touching no line?
+
+\prob{z-isosceles}{Three to two}{Q1614, by Thomas Todd}
+In an isosceles triangle, the two equal sides together are as long as the base and the
+height together. Show that the base is to the height as 3 is to 2.
+
+%================ PINK ================
+\band{bandpink}{Pink}{ages 14--16}
+
+\prob{z-ortho}{The orthocentre and the cotangent}{Q1599, by the Rev.~John Sampson}
+In a triangle $ABC$ the three altitudes meet at $P$. Show that $PC = AB\cot C$.
+
+\prob{z-area}{An area from the incircle}{Q1600, by Thomas Baker}
+The incircle of a triangle touches side $AB$ and divides it into two pieces. Show that the
+product of the two pieces and $\cot\tfrac12C$ equals the area of the triangle.
+
+\prob{z-midpoints}{Midpoints and contact points}{Q1635, by W.~F.~Harrison}
+On each side of a triangle, the distance between the midpoint of the side and the point
+where the incircle touches it is half the difference of the other two sides. Prove it.
+
+\prob{z-altitudes}{The area from three altitudes}{Q1605, by W.~Rutherford}
+The three altitudes of a triangle are $p_1$, $p_2$, $p_3$. Find its area. Work it out for
+altitudes 12, 15 and 20.
+
+\prob{z-flag}{The flag and the tower}{after Q1669, by W.~Rutherford}
+A flagstaff $a$ feet high stands on top of a tower $b$ feet high. Where on the level ground
+must an observer stand, with his eye $h$ feet above the ground, so that the tower and the
+flagstaff look equally tall? Work it out for $a = 30$, $b = 20$, $h = 5$.
+
+\prob{z-arbelos}{Two semicircles in a semicircle}{Q1668, by W.~S.~B.~Woolhouse}
+Draw a semicircle. With the two ends of its diameter as centres, draw two more
+semicircles, on the same side, that touch each other. Show that a common tangent to these
+two also touches the first semicircle.
+
+\prob{z-equilateral}{Three equilateral triangles}{Q1633, by W.~Rutherford}
+On each side of a triangle, draw an equilateral triangle outwards. From each corner of the
+original triangle, drop a perpendicular to the line joining the two outer vertices
+nearest to it. Show that the three perpendiculars meet in a point.
+
+%================ PURPLE ================
+\band{bandpurple}{Purple}{ages 16--17}
+
+\prob{z-gauss}{Ameen Bey's integral}{Q1653, by M.~Z.~Ameen Bey}
+Find $\displaystyle\int_0^\infty e^{-x^2}\,dx$.
+
+\prob{z-series}{Ameen Bey's series}{Q1654, by M.~Z.~Ameen Bey}
+Find the $n$th term, and the sum of $n$ terms, of $1 + 3 + 8 + 24 + 65 + 153 + 320 + 610 +
+\cdots$.
+
+\prob{z-cylinders}{Cylinders without end}{Q1663, by John Butterworth}
+Cut the largest possible cylinder out of a cone. Then cut the largest cylinder out of the
+small cone left on top, and so on for ever. What fraction of the cone do all the
+cylinders fill?
+
+\prob{z-billiard}{The shortest quadrilateral in a rectangle}{Q1621, by Robert Sumner}
+Show that among all quadrilaterals with one corner on each side of a rectangle, the least
+perimeter equals the sum of the two diagonals. Show that there are infinitely many such
+quadrilaterals, all parallelograms with sides parallel to the diagonals.
+
+\prob{z-parabola}{Circles in a parabola}{Q1622, by W.~F.~Harrison}
+A string of circles is placed inside a parabola, along its axis, each touching the
+parabola and the one before. The first touches it at the vertex and has its centre at the
+focus. Find the radius of the $n$th circle.
+
+\prob{z-locus}{The third circle}{Q1661, by Philip Beecroft}
+Two circles touch each other and touch a straight line at the fixed points $A$ and $B$. A
+third, small circle touches the line and both circles. As the first two circles change
+size, keeping their points of contact $A$ and $B$, find the path of the centre of the
+third.
+
+\prob{z-pressure}{Equal pressures}{Q1641, by Robert Sumner}
+A rectangle of length $a$ is lowered into water, tilted at any angle, with one short edge
+just at the surface. Divide it, by lines parallel to that edge, into $n$ strips that bear
+equal pressures.
+
+\prob{z-equator}{To Constantinople by the equator}{Q1608, by Miss L.~L.}
+A traveller undertakes to go from London to Constantinople and to touch the equator on the
+way. Treating the Earth as a sphere, find where he should touch it and how long his
+journey is, if it is to be as short as possible. Take London at latitude $51^\circ33'$,
+Constantinople at $41^\circ1'$, and the difference of longitude $28^\circ58'$, as the
+Diary's solver did.
+
+%================ BEYOND ================
+\band{bandgrey}{Beyond A-level}{series and motion}
+
+\prob{z-test}{The integral test}{Q1671, by Amicus}
+Let $\phi$ be positive and decreasing on $x \ge 1$. Show that $\int_1^\infty\phi(x)\,dx$ is
+finite or infinite according as $\phi(1) + \phi(2) + \phi(3) + \cdots$ converges or
+diverges.
+
+\prob{z-hollow}{The hollowed cone}{Q1589, by James Hann}
+A solid cone swings as a pendulum about a horizontal axis through its vertex. A cone with
+the same base, but with its vertex at the centre of gravity of the first, is hollowed out
+of it. How much does this change the time of a swing?
+
+%================ ANSWERS ================
+\clearpage
+\section*{Answers}
+
+\ans{z-diagonals}{9 in a hexagon and 20 in an octagon. From each corner you can draw a
+diagonal to every corner except itself and its two neighbours, so $n - 3$ of them. That
+counts each diagonal twice, so there are $n(n-3)/2$.}
+
+\ans{z-shilling}{One in four. The shilling lies inside a square exactly when its centre
+lands at least a radius from every side, that is, inside a smaller square whose side is
+the square's side less one diameter. Here that is half the side, so a quarter of the
+area. Mr Mason of Scoulton gave the general rule: with squares $n$ diameters across, the
+chance is $(n-1)^2/n^2$.}
+
+\ans{z-isosceles}{Let the equal sides be $s$, the base $b$ and the height $h$. Then
+$2s = b + h$ and $s^2 = h^2 + \tfrac14b^2$. Squaring the first and comparing,
+$b^2 + 2bh + h^2 = 4h^2 + b^2$, so $2b = 3h$.}
+
+\ans{z-ortho}{Let $CF$ be the altitude from $C$ and $AD$ the one from $A$. Triangles $CPD$
+and $ABD$ are similar, because both are right-angled and $\angle PCD = \angle BAD$. So
+$PC/AB = CD/AD = \cot C$. This is Rutherford's proof; Thomas Hindle and W.~F.~Harrison
+gave others. Miss L.~L. and Mary Forster are among the solvers listed.}
+
+\ans{z-area}{With the usual notation the pieces of $AB$ are $s-a$ and $s-b$, and
+$\cot\tfrac12C = (s-c)/r$. So the product is $(s-a)(s-b)(s-c)/r$. By Heron's formula
+$(s-a)(s-b)(s-c) = \Delta^2/s$, and $\Delta = rs$, so the product is $\Delta$. W.~Hopps
+proved it with the fact that if three arcs make up a semicircle, the sum of their tangents
+equals their product.}
+
+\ans{z-midpoints}{On side $BC$ the contact point is $s - b$ from $B$, and the midpoint is
+$\tfrac12a$ from $B$. Their distance is $|s - b - \tfrac12a| = \tfrac12|c - b|$.}
+
+\ans{z-altitudes}{Write $u_i = 1/p_i$ and $\sigma = \tfrac12(u_1+u_2+u_3)$. The sides are
+$2\Delta u_i$, and Heron's formula then gives
+$1/\Delta = 4\sqrt{\sigma(\sigma-u_1)(\sigma-u_2)(\sigma-u_3)}$. For altitudes 12, 15 and
+20 the area is 150: the triangle has sides 25, 20 and 15. Several solvers pointed out that
+the question was already in Emerson's \textit{Algebra}.}
+
+\ans{z-flag}{The line of sight to the top of the tower must bisect the angle between the
+lines of sight to its foot and to the top of the flag. By the angle-bisector theorem, the
+distances from the eye to the foot of the tower and to the top of the flag are as $b$ to
+$a$. That gives
+\[ x^2 = \frac{a^2h^2 - b^2(a+b-h)^2}{b^2 - a^2} \]
+for the distance $x$ from the tower. With $a = 30$, $b = 20$, $h = 5$ it is about 39.7 feet,
+where each subtends $27^\circ53'$. With the eye on the ground ($h = 0$) it is
+$b\sqrt{(a+b)/(a-b)}$, possible only if the flagstaff is taller than the tower. The answer
+was printed in 1841, in a volume we do not have; this one is ours.}
+
+\ans{z-arbelos}{Let the first semicircle have centre $O$ and radius $R$, and the others
+centres $A$, $B$ (the ends of the diameter) and radii $p$, $q$ with $p + q = 2R$. A common
+tangent is at distances $p$ and $q$ from $A$ and $B$. Its distance from the midpoint $O$ of
+$AB$ is the average, $\tfrac12(p+q) = R$. So it touches the first semicircle too. (The
+answer appeared in 1841; this is ours.)}
+
+\ans{z-equilateral}{Let $A'$, $B'$, $C'$ be the outer vertices on $BC$, $CA$, $AB$. The circle
+with centre $B'$ through $A$ also passes through $C$, and the circle with centre $C'$
+through $A$ also passes through $B$. These two circles meet at $A$, so their radical axis
+is the line through $A$ perpendicular to $B'C'$: the first of the three perpendiculars.
+In the same way the other two perpendiculars are the radical axes of the other pairs among
+the three circles centred at $A'$, $B'$, $C'$. The three radical axes of three circles
+always meet in a point, the radical centre.}
+
+\ans{z-gauss}{$\tfrac12\sqrt\pi$. Square the integral and write it as a double integral
+over the quarter-plane, $\iint e^{-(x^2+y^2)}\,dx\,dy$. In polar co-ordinates this is
+$\int_0^{\pi/2}\int_0^\infty e^{-r^2}r\,dr\,d\theta = \tfrac\pi4$.}
+
+\ans{z-series}{The fifth differences are constant, so the $n$th term is a polynomial of
+degree five:
+\[ u_n = \tfrac1{60}\bigl(n^5 + 15n^3 - 90n^2 + 254n - 120\bigr). \]
+The next term is 1,081. The sum of $n$ terms is
+$\tfrac1{360}\,n\bigl(n^5 + 3n^4 + 25n^3 - 135n^2 + 514n - 48\bigr)$. Professor Gill of
+New York found the same differences, 2, 3, 8, 6, 2, and summed by the calculus of finite
+differences.}
+
+\ans{z-cylinders}{$\tfrac6{13}$ of the cone. The largest cylinder in a cone fills
+$\tfrac49$ of it and is cut at a third of the height. The cone left on top has a third of
+the height and a third of the radius, so $\tfrac1{27}$ of the volume. The cylinders fill
+$\tfrac49\bigl(1 + \tfrac1{27} + \tfrac1{27^2} + \cdots\bigr) = \tfrac49\cdot\tfrac{27}{26} =
+\tfrac6{13}$. The first step is Barbara Sidway's question of 1714. (The printed answer
+appeared in 1841; this one is ours.)}
+
+\ans{z-billiard}{Reflect the rectangle in its sides, as a billiard player would. A
+quadrilateral with one corner on each side unfolds into a path from a point to its image
+after four reflections, which is a translation by twice a diagonal. So its perimeter is at
+least that distance, twice the length of a diagonal, which is the sum of the two
+diagonals. The bound is reached when the path is straight: the sides are then parallel to
+the diagonals, and any starting point on a side works.}
+
+\ans{z-parabola}{Let the parabola be $y^2 = 4kx$, with focus $(k, 0)$. The first circle has
+radius $k$. A circle centred on the axis at $(c, 0)$ with $c > 2k$ touches the parabola
+when its radius satisfies $r^2 = 4k(c - k)$. Writing $r = 2ks$, the condition that each
+circle touches the next gives $(s_{n+1} - 1)^2 = (s_n + 1)^2$ from the third circle on, and
+$s_2 = 1 + \sqrt2$. So for $n \ge 2$ the radius of the $n$th circle is
+$2k\bigl(2n - 3 + \sqrt2\bigr)$: from the second circle on, the radii go up in equal steps
+of $4k$, twice the semi-parameter.}
+
+\ans{z-locus}{An arc of a parabola through $A$ and $B$, with its vertex above the middle of
+$AB$, at an eighth of $AB$. Put $AB = 2d$. Circles of radii $r_1$, $r_2$ touching a line
+and each other have $AB^2 = 4r_1r_2$, so $r_1r_2 = d^2$; the small circle has
+$1/\sqrt{r_3} = 1/\sqrt{r_1} + 1/\sqrt{r_2}$. Its centre is at height $y = r_3$ and
+distance $x = 2\sqrt{r_1r_3}$ from $A$, and eliminating the radii gives
+$y = x(2d - x)/4d$. (The answer appeared in 1841; this one is ours.)}
+
+\ans{z-pressure}{The pressure on a strip is proportional to its area times the depth of its
+centre, so the pressure on the part from the surface edge down to a distance $x$ along the
+rectangle goes as $x^2$, whatever the tilt. The strips bear equal pressures when the
+dividing lines are at distances $a\sqrt{1/n}, a\sqrt{2/n}, \dots, a\sqrt{(n-1)/n}$ from the
+top edge.}
+
+\ans{z-equator}{The shortest route makes equal angles with the equator on the way down and
+the way up, like light reflected in a mirror. So reflect Constantinople in the equator, to
+latitude $41^\circ1'$ south, and go by the great circle from London to that image. With the
+Diary's figures the journey is $95^\circ56'$ of a great circle, about 6,660 miles, and the
+traveller touches the equator $17^\circ11'$ of longitude east of London. William Rutherford
+used the equal-angle principle. W.~Clough's printed answer is $96^\circ0'45''$, touching at
+$16^\circ55'$.}
+
+\ans{z-test}{Because $\phi$ is decreasing, on each interval $[k, k+1]$ we have
+$\phi(k+1) \le \phi(x) \le \phi(k)$. Integrating and adding,
+$\phi(2) + \cdots + \phi(n) \le \int_1^n\phi \le \phi(1) + \cdots + \phi(n-1)$. So the
+integral and the series are bounded or unbounded together. This is the Maclaurin--Cauchy
+integral test. (Amicus's own answer appeared in 1841.)}
+
+\ans{z-hollow}{Let the cone have height $h$ and base radius $R$. Hung by its vertex, the
+solid cone swings like a simple pendulum of length $(4h^2 + R^2)/5h$. The hollowed cone
+swings like one of length $3(27h^2 + 8R^2)/110h$. So the time of a swing is multiplied by
+\[ \sqrt{\frac{3(27h^2 + 8R^2)}{22(4h^2 + R^2)}}. \]
+For a cone as wide as it is tall ($R = h$) this is 0.977, so it swings about 2.3 per cent
+faster. The two times are equal when $R^2 = \tfrac72h^2$, and a wider cone swings more
+slowly once hollowed. W.~S.~B.~Woolhouse answered it in 1836, by moments of inertia.}
+
+\begin{diarynote}{When the Diary was wrong}
+\textbf{Problem~\ref{z-equator}.} On his own figures, W.~Clough's track of
+$96^\circ0'45''$ is about $4'$ of arc, some five miles, longer than the shortest, and his
+point of contact is about $17'$ too far west. The editor printed several answers that
+``differ only in numerical result on account of different assumptions of longitude and
+latitude''. That is true of the others, but not of this difference, which is an error in
+the working.
+\end{diarynote}
+
+\begin{diarynote}{Where the Diary simply worked differently}
+\textbf{Problem~\ref{z-altitudes}.} Not an error, but not new: solvers pointed out that
+the question had already been answered in Emerson's \textit{Algebra}.
+
+\textbf{Not in this booklet.} Question 1623 asked for a proof that a certain sum of
+rectangles about the centre of gravity of a triangle is constant. The editor printed a
+note that ``some oversight appears to have been committed in the enunciation of this
+question'', and gave instead the true value in terms of the sides.
+\end{diarynote}
+
+\vfill
+{\small Source: \textit{The Ladies' Diary} for 1835--1840, Harvard College Library copy,
+digitised by HathiTrust (\url{https://hdl.handle.net/2027/hvd.hxvmnt}).}
+
+\end{document}

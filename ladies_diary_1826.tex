@@ -1,0 +1,356 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[british]{babel}
+\usepackage[a4paper,margin=2.3cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc,angles,quotes,patterns}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{bandgreen}{RGB}{46,139,87}
+\definecolor{bandblue}{RGB}{30,100,190}
+\definecolor{bandamber}{RGB}{220,140,20}
+\definecolor{bandpink}{RGB}{210,70,140}
+\definecolor{bandpurple}{RGB}{110,50,160}
+
+\newcounter{prob}
+% \prob{label}{title}{source}
+\newcommand{\prob}[3]{\par\bigskip\refstepcounter{prob}\label{#1}%
+  \noindent\textbf{\theprob.\ #2}\hfill{\small\textit{#3}}\par\nopagebreak\smallskip}
+\newcommand{\ans}[2]{\par\smallskip\noindent\textbf{\ref{#1}.}\ #2}
+
+\newcommand{\band}[3]{%
+  \clearpage
+  \begin{tcolorbox}[colback=#1!12,colframe=#1,boxrule=1pt,arc=2pt]
+  {\Large\bfseries\color{#1} #2}\hfill{\large #3}
+  \end{tcolorbox}}
+
+\newtcolorbox{diarynote}[1]{colback=black!4,colframe=black!45,boxrule=0.6pt,
+  arc=2pt,fonttitle=\bfseries\small,title={#1},fontupper=\small}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+\definecolor{bandgrey}{RGB}{85,85,85}
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{3cm}
+{\Huge\bfseries The Ladies' Diary\par}
+\vspace{0.4cm}
+{\LARGE The Gregory years, 1826--1834\par}
+\vspace{0.8cm}
+{\Large Twenty-two problems from nine issues\par}
+\vspace{2cm}
+{\large\itshape We admire the talents of our fair correspondent. If she will only make
+up her mind to carry her own solutions through, instead of referring to Simpson, Hymer,
+\&c.\ she may soon vie with Donna Agnesi, and our own Mrs.\ Somerville.\par}
+\vspace{0.3cm}
+{\small The editor, on Miss L.~L., 1834\par}
+\vfill
+{\large Working draft\par}
+\end{titlepage}
+
+\section*{A word before the problems}
+
+This booklet fills the last gap in the series. It is made from a bound volume of the Diary
+for 1825 to 1834, the 122nd to the 131st almanacs, digitised by Google Books. The new
+questions set in it run from 1434 to 1583. Those of 1825 (1434 to 1448) are in the
+booklet before this one, which we have checked against the answers printed here, so this
+booklet draws on the questions of 1826 to 1834. With it, the
+mathematics of \textit{The Ladies' Diary} is now covered from the first questions to the
+last. The editor throughout was Olinthus Gregory of the Royal Military Academy, Woolwich.
+
+The Diary had grown up. Its prize questions came from the Continent: M.~Brianchon, of
+Brianchon's theorem, set the prize question on tetrahedra in 1830, and a year later
+``Investigator'' asked for a simple proof of ``Prof.\ Gauss's new principle of
+Mechanics''. Questions were borrowed from Gergonne's \textit{Annales} and Quetelet's
+\textit{Correspondance}, and sent from Luxembourg, from Trinity College Dublin and from
+New York. Samuel Earnshaw of Sheffield, later of Earnshaw's theorem, set
+problem~\ref{v-earnshaw}. Charles Gill, then of Hessle near Hull, set
+problems~\ref{v-thp} and~\ref{v-pent}; by 1839 he was a professor in New York, still
+writing to the Diary.
+
+\subsection*{The women}
+
+Three women stand out, and they are among the best evidence in the whole series.
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item \textbf{Miss Jane Thoburn of Blyth, ``aged 12 years''}, has the first printed
+answer to problem~\ref{v-nine}, in 1829. Her solution is short and correct.
+\item \textbf{Miss L.~L.} was answering in quantity by 1834: we count her name against at
+least eight questions that year, and her solution to problem~\ref{v-sines} is printed
+first. She also set problem~\ref{v-ll}. The editor's note on her, on the title page of
+this booklet, compares her with Maria Agnesi and Mary Somerville: high praise, with a
+nudge to carry her solutions through for herself.
+\item \textbf{Mrs S.~Clay} of Moulton, Lincolnshire, the Sarah Ellis of the previous
+booklet, answered at least nine questions in 1828.
+\end{itemize}
+
+\subsection*{How to read the labels}
+
+\textit{Q1479} is the Diary's own question number. \textit{After Q1542} means the question
+has been retold; the answer at the back is then for the retelling. The bands are those of
+the first book in this series; there is nothing young enough for Green or Blue.
+Mechanics goes in the last section.
+
+\subsection*{How this edition was made}
+This edition was prepared with the assistance of Claude, an AI model made by Anthropic.
+Under the editor's direction, Claude worked from Google Books' machine-read text of the
+volume. It drafted the retellings, solutions, notes and introduction, recomputed every
+answer, and typeset the text. Selection, editorial decisions and final responsibility for
+the text are the editor's.
+
+%================ AMBER ================
+\band{bandamber}{Amber}{ages 11--14}
+
+\prob{v-nine}{Nine numbers}{Q1479, by J.~B.~Luce}
+Find nine numbers in arithmetic progression such that the sum of their squares is
+seventeen times the product of the third and the seventh.
+
+\prob{v-breakfast}{The breakfast hour}{Q1464, by Hatton Cummings}
+``In summer I sit down to breakfast between 7 and 8 o'clock, at the moment when the hour
+and minute hands of my clock make equal angles with the horizon. In winter I sit down
+between 8 and 9, when the hands are again equally inclined to the horizon.'' At what
+times does he breakfast?
+
+\prob{v-seven}{Dividing by 7 and 13}{Q1512, by Charles Gill}
+Give a quick way to tell whether a large number divides by 7 or by 13, without dividing.
+
+\prob{v-earnshaw}{Odd numbers}{Q1528, by Samuel Earnshaw}
+Show that $1 + 3 + 5 + 7 + \cdots = (1 - 3 + 5 - 7 + \cdots)^2$, both series being taken
+to the same number of terms.
+
+\prob{v-polygons}{The angles of regular polygons}{Q1556, by F.~F.~F., Trinity College,
+Dublin}
+Show that an angle of a regular polygon of $n$ sides is to an angle of one of $n+1$ sides
+as $(1 + 2 + \cdots + (n-1)) - 1$ is to $1 + 2 + \cdots + (n-1)$.
+
+%================ PINK ================
+\band{bandpink}{Pink}{ages 14--16}
+
+\prob{v-perimeter}{Perimeter equals area}{Q1465, by Thomas Hindmarsh}
+Find a rule for right-angled triangles with whole-number sides whose perimeter is
+numerically equal to their area, and give two examples.
+
+\prob{v-cot}{Squares over cotangents}{Q1471, by John Ramsay}
+Show that in any triangle the sum of the squares of the sides, divided by the sum of the
+cotangents of the angles, is four times the area.
+
+\prob{v-hexagon}{The hexagon of squares}{Q1505, by Petrarch}
+Draw a square outwards on each side of a triangle and join the outer corners of
+neighbouring squares, making a hexagon. Show that the sum of the squares of the six
+sides of the hexagon is four times the sum of the squares of the sides of the triangle.
+
+\prob{v-dodecagon}{The regular dodecagon}{Q1574, by the Rev.~John Sampson}
+Show that in a regular dodecagon the distance between two opposite sides equals the side
+of the dodecagon plus the side of the square inscribed in the same circle.
+
+\prob{v-palindrome}{A palindrome whose square uses every digit}{Q1576, by the Rev.~John
+Sampson}
+Find a five-digit number of the form $abcba$ whose square contains all ten digits.
+
+\prob{v-maffett}{Sums that are squares}{after Q1542, by Robert Maffett}
+Find three different positive whole numbers such that the sum of any two is a square, and
+twice the sum of all three is a fourth power.
+
+%================ PURPLE ================
+\band{bandpurple}{Purple}{ages 16--17}
+
+\prob{v-ll}{The circle in the triangle}{Q1577, by Miss L.~L.}
+$AB$ is the diameter of a semicircle and $C$ a point on it. Drop the perpendicular $CD$ to
+$AB$ and join $AC$. Where should $C$ be for the circle inscribed in triangle $ACD$ to be
+as large as possible, and how large is it?
+
+\prob{v-sines}{A hundred sines}{Q1557, by John Baines}
+For what value of $a$ is the sum of the hundred terms
+$\sin a + \sin 3a + \sin 5a + \cdots + \sin 199a$ greatest?
+
+\prob{v-thp}{Triangular, pentagonal and hexagonal}{Q1468, by Charles Gill}
+Find a number greater than 1 that is at once triangular, pentagonal and hexagonal.
+
+\prob{v-cubes}{Odd cubes}{Q1529, by the Rev.~John Sampson}
+Show that $1^3 + 3^3 + 5^3 + \cdots$, taken to any number of terms, is always a hexagonal
+number. When is it a perfect square?
+
+\prob{v-semicircles}{Semicircles through centres of gravity}{Q1456, by Isaac Newton of Wisbech}
+A semicircle stands on a diameter $AB$. A second semicircle, also on the line $AB$ and
+touching the first at $B$, passes through the centre of gravity of the first; a third
+passes through the centre of gravity of the second, and so on. Find the total area of
+all the semicircles.
+
+\prob{v-director}{Right-angled tangents}{Q1504, by Petrarch}
+Show that the points from which the two tangents to an ellipse are at right angles lie
+on a circle, whose radius is the distance between the ends of the major and minor axes.
+
+\prob{v-chords}{All the chords of a regular polygon}{Q1521, by Petrarch}
+Join every pair of corners of a regular polygon of $n$ sides inscribed in a circle of
+radius $r$. Show that the sum of all the lines, sides included, is
+$nr\cot\frac{\pi}{2n}$.
+
+\prob{v-fermat}{Fermat's theorem}{Q1550, by R.~Vigors}
+If $a$ is any whole number and $p$ any prime, $a^p - a$ divides by $p$. Give a simple
+proof from first principles.
+
+%================ BEYOND ================
+\band{bandgrey}{Beyond A-level}{numbers and motion}
+
+\prob{v-pent}{Two pentagonal numbers}{Q1489, by Charles Gill}
+Find two pentagonal numbers whose sum and difference are also pentagonal.
+
+\prob{v-sphere}{Two ways to hang a sphere}{Q1495, by W.~Mawson}
+A solid sphere of radius 10 inches swings as a pendulum about a point 20 inches from its
+centre. About what other point, inside the sphere, will it swing in the same time?
+
+\prob{v-dog}{The dog and the duck}{Q1565, by Nimrod Knickerbocker, New York}
+A sportsman shoots a duck, which falls at the edge of the river exactly opposite him. His
+spaniel swims for it, always heading straight at the duck, while the steady stream carries
+him downstream. Find the dog's path, in terms of the ratio of the stream's speed to his.
+
+%================ ANSWERS ================
+\clearpage
+\section*{Answers}
+
+\ans{v-nine}{Any arithmetic progression whose first term is 0, for instance
+$0, 1, 2, \dots, 8$: the squares add up to 204, which is $17\times2\times6$. Writing the
+terms as $x - 4d, \dots, x + 4d$, the condition becomes $17(x^2 - 4d^2) = 9x^2 + 60d^2$, so
+$x = 4d$, and the first term $x - 4d$ is 0. This is Jane Thoburn's solution. P.~M'Kay of Woolwich gave the same progression backwards, 8, 7, \dots,
+0.}
+
+\ans{v-breakfast}{At $23\tfrac1{13}$ minutes past 7 and $18\tfrac6{13}$ minutes past 8. The
+hands are equally inclined to the horizon when they are mirror images in the line from 12
+to 6, so their angles from 12 add up to a whole turn. At $m$ minutes past $h$ the hour hand
+is at $30h + \tfrac12m$ degrees and the minute hand at $6m$, so
+$30h + 6\tfrac12m = 360$. Matthew Paxton gave this rule, and noted that the hands are also
+equally inclined when they are together.}
+
+\ans{v-seven}{Since $1001 = 7\times11\times13$, a thousand leaves remainder $-1$ on division
+by each. So split the number into blocks of three digits from the right, and add and
+subtract them alternately. The number divides by 7, 11 or 13 exactly when the result does.
+For example $123{,}456{,}789$ gives $789 - 456 + 123 = 456$, which divides by neither 7 nor
+13, so neither does the number.}
+
+\ans{v-earnshaw}{Both sides are $n^2$. The odd numbers add up to $n^2$, and the alternating
+sum pairs off into $-2$'s, giving $-n$ when $n$ is even and $n$ when $n$ is odd.}
+
+\ans{v-polygons}{An angle of a regular $n$-gon is $180^\circ(n-2)/n$, so the ratio is
+$\dfrac{(n-2)(n+1)}{n(n-1)}$. And $1 + 2 + \cdots + (n-1) = \tfrac12n(n-1)$, so the
+proposed ratio is $\dfrac{\frac12n(n-1) - 1}{\frac12n(n-1)} = \dfrac{(n-2)(n+1)}{n(n-1)}$.}
+
+\ans{v-perimeter}{If the legs are $a$ and $b$, the condition reduces to
+$(a - 4)(b - 4) = 8$, so the only whole-number triangles are 5, 12, 13 and 6, 8, 10. Mrs
+S.~Clay of Moulton was among the solvers. (Question 1509, two years later, asked for the
+two legs alone to add up to the area. That gives $(a-2)(b-2) = 4$, so legs 3 and 6, or 4
+and 4, and neither triangle has a whole-number hypotenuse.)}
+
+\ans{v-cot}{$\cot A = (b^2 + c^2 - a^2)/4\Delta$, and similarly for the others. Adding, the
+cotangents sum to $(a^2 + b^2 + c^2)/4\Delta$.}
+
+\ans{v-hexagon}{The three sides of the hexagon that are sides of the triangle contribute
+the sum $S$ of the squares of the triangle's sides. Each of the other three joins the outer
+corners of two squares at a vertex, say $C$. That join is the third side of a triangle with
+sides $a$, $b$ and included angle $180^\circ - C$, so its square is
+$a^2 + b^2 + 2ab\cos C$. Adding the three and using $2ab\cos C = a^2 + b^2 - c^2$ gives
+$3S$, so the whole is $4S$.}
+
+\ans{v-dodecagon}{In a circle of radius $R$ the side of the dodecagon is $2R\sin15^\circ$ and
+the side of the inscribed square is $R\sqrt2 = 2R\sin45^\circ$. The distance between
+opposite sides is $2R\cos15^\circ$. And $\sin15^\circ + \sin45^\circ =
+2\sin30^\circ\cos15^\circ = \cos15^\circ$.}
+
+\ans{v-palindrome}{There are exactly three: $35853^2 = 1{,}285{,}437{,}609$,
+$84648^2 = 7{,}165{,}283{,}904$ and $97779^2 = 9{,}560{,}732{,}841$. The Rev.~John Sampson's
+printed answer gives all three.}
+
+\ans{v-maffett}{For example 904, 1,400 and 2,696. The pairwise sums are $48^2$, $60^2$ and
+$64^2$, and twice the total is $10{,}000 = 10^4$. Writing the pairwise sums as $x^2$, $y^2$,
+$z^2$, twice the total is $x^2 + y^2 + z^2$, so one needs three squares adding up to a
+fourth power, each smaller than the sum of the other two. Maffett gave a general rule of
+this kind. The question allowed equal numbers, and then 72, 72 and 504 also work.}
+
+\ans{v-ll}{When $\cos\angle CAB \approx 0.8269$, that is $\angle CAB \approx 34^\circ13'$; the
+largest circle then has diameter about $0.3219$ of $AB$. With $AB = d$ and
+$\angle CAB = \phi$, the triangle has $AC = d\cos\phi$, $AD = d\cos^2\phi$ and
+$CD = d\cos\phi\sin\phi$, and its inscribed circle has diameter
+$AD + CD - AC = d\cos\phi(\cos\phi + \sin\phi - 1)$. Miss L.~L.'s own answer, printed in
+1835, gives $34^\circ12'51''$ and $0.321869\,d$, exactly right.}
+
+\ans{v-sines}{About $40'4''$, or $a \approx 0.011656$ radians. The sum is
+$\sin^2(100a)/\sin a$, which is greatest where $\tan100a = 200\tan a$. This is the answer of
+John Baines, the proposer, and W.~Clough. The solution printed first, by Miss L.~L., gave
+$37'47''$; see the grey box.}
+
+\ans{v-thp}{40,755, which is the 285th triangular, the 165th pentagonal and the 143rd
+hexagonal number. Every hexagonal number is triangular, so one needs a hexagonal number
+that is pentagonal, which leads to a Pell equation. The next is 1,533,776,805. Mr Mason of
+Scoulton found 40,755.}
+
+\ans{v-cubes}{The sum of the first $n$ odd cubes is $n^2(2n^2 - 1)$, which is the hexagonal
+number $m(2m - 1)$ with $m = n^2$. It is a square when $2n^2 - 1$ is a square, which is
+a Pell equation: $n = 1, 5, 29, 169, 985, \dots$, each from the last two by
+$n_{k+1} = 6n_k - n_{k-1}$. For $n = 5$ the sum is $1{,}225 = 35^2$.}
+
+\ans{v-semicircles}{About $1.534$ times the first. The centre of gravity of a semicircle of
+radius $R$ lies on its axis, $4R/3\pi$ from the diameter. A circle through $B$ with its
+centre on $AB$ that passes through that point has radius
+$kR$, with $k = \tfrac12\bigl(1 + \tfrac{16}{9\pi^2}\bigr) \approx 0.5901$. The semicircles
+shrink by the factor $k$ each time, so their areas add up to $1/(1 - k^2)$ times the first.}
+
+\ans{v-director}{For the ellipse $x^2/a^2 + y^2/b^2 = 1$, the line $y = mx + c$ is a tangent
+when $c^2 = a^2m^2 + b^2$. The tangents through $(X, Y)$ have slopes satisfying
+$(Y - mX)^2 = a^2m^2 + b^2$, and they are perpendicular when the product of the slopes is
+$-1$, which gives $X^2 + Y^2 = a^2 + b^2$. The radius $\sqrt{a^2+b^2}$ is the distance
+between the ends of the two axes.}
+
+\ans{v-chords}{The chords from one corner have lengths $2r\sin(k\pi/n)$ for
+$k = 1, \dots, n-1$, and $\sum_k\sin(k\pi/n) = \cot(\pi/2n)$. Each chord is counted twice
+when we sum over all $n$ corners, so the total is
+$\tfrac12n\cdot2r\cot(\pi/2n) = nr\cot\frac\pi{2n}$.}
+
+\ans{v-fermat}{By induction on $a$. The binomial theorem gives
+$(a+1)^p - (a+1) = (a^p - a) + \sum_{k=1}^{p-1}\binom pk a^k$, and each $\binom pk$ with
+$0 < k < p$ divides by $p$, because $p$ is prime and appears in the numerator but not the
+denominator. So if $p$ divides $a^p - a$, it divides $(a+1)^p - (a+1)$.}
+
+\ans{v-pent}{The smallest pair of ordinary pentagonal numbers is 1,560,090 and 7,042,750,
+whose sum is 8,602,840 and difference 5,482,660, all four pentagonal. This was found only
+in the computer age. John Whitley's printed answer gives pairs such as 7 and 5, and 57 and
+35; see the grey box.}
+
+\ans{v-sphere}{2 inches from the centre. Hung at distance $d$ from its centre, the sphere
+swings like a simple pendulum of length $d + \tfrac25r^2/d$. At $d = 20$ this is 22 inches.
+The same length comes from $d = \tfrac25r^2/20 = 2$: the point of suspension and the centre
+of oscillation can always be exchanged.}
+
+\ans{v-dog}{Put the duck at the origin and the dog at $(a, 0)$ to start, on the far bank,
+with the stream carrying him in the $y$ direction, and let $k$ be the stream's speed
+divided by his. His path is
+\[ y = \frac a2\left[\left(\frac xa\right)^{1-k} - \left(\frac xa\right)^{1+k}\right]. \]
+If $k < 1$ he reaches the duck. If $k = 1$ he ends at the point $\tfrac12a$ downstream of
+it, on its bank, swimming hard and getting nowhere. If $k > 1$ he never reaches the bank
+at all. Knickerbocker's own answer, printed in 1834, reaches the same curve in polar
+coordinates, and lets the dog start anywhere.}
+
+\begin{diarynote}{When the Diary was wrong}
+\textbf{Problem~\ref{v-sines}.} Miss L.~L. expanded $\tan100a$ as a series and cut it off
+after two terms, which gives $\tan^2a = 6/(5n^2 - 3n - 2)$ and $37'47''$. The cut is too
+early for an angle this large, and the exact condition gives $40'4''$, as Baines and Clough
+found. The editor printed her solution first and theirs after it, without
+comment.
+
+\textbf{Problem~\ref{v-pent}.} Whitley used the test that $24p + 1$ is a square. That test
+also admits the ``pentagonal numbers of negative rank'', $n(3n-1)/2$ with $n$ negative,
+such as 2, 7 and 57. With them his pairs work; with ordinary pentagonal numbers they do
+not, and the smallest true pair runs into millions.
+\end{diarynote}
+
+
+
+\vfill
+{\small Source: \textit{The Ladies' Diary} for 1825--1834, digitised by Google Books.}
+
+\end{document}

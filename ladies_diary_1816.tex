@@ -1,0 +1,422 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[british]{babel}
+\usepackage[a4paper,margin=2.3cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc,angles,quotes,patterns}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{bandgreen}{RGB}{46,139,87}
+\definecolor{bandblue}{RGB}{30,100,190}
+\definecolor{bandamber}{RGB}{220,140,20}
+\definecolor{bandpink}{RGB}{210,70,140}
+\definecolor{bandpurple}{RGB}{110,50,160}
+
+\newcounter{prob}
+% \prob{label}{title}{source}
+\newcommand{\prob}[3]{\par\bigskip\refstepcounter{prob}\label{#1}%
+  \noindent\textbf{\theprob.\ #2}\hfill{\small\textit{#3}}\par\nopagebreak\smallskip}
+\newcommand{\ans}[2]{\par\smallskip\noindent\textbf{\ref{#1}.}\ #2}
+
+\newcommand{\band}[3]{%
+  \clearpage
+  \begin{tcolorbox}[colback=#1!12,colframe=#1,boxrule=1pt,arc=2pt]
+  {\Large\bfseries\color{#1} #2}\hfill{\large #3}
+  \end{tcolorbox}}
+
+\newtcolorbox{diarynote}[1]{colback=black!4,colframe=black!45,boxrule=0.6pt,
+  arc=2pt,fonttitle=\bfseries\small,title={#1},fontupper=\small}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+\definecolor{bandgrey}{RGB}{85,85,85}
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{3cm}
+{\Huge\bfseries The Ladies' Diary\par}
+\vspace{0.4cm}
+{\LARGE After Leybourn, 1816--1825\par}
+\vspace{0.8cm}
+{\Large Twenty-six problems from ten issues\par}
+\vspace{2cm}
+{\large\itshape Virtue and Sense with Female Softness join'd,\\
+All that subdues and captivates Mankind,\\
+In Britain's matchless Fair resplendent shine;\\
+They rule Love's Empire by a Right Divine:\\
+Justly their Charms th' astonish'd World admires,\\
+Whom Royal Charlotte's bright example fires.\par}
+\vspace{0.3cm}
+{\small The Diary's title page, 1816\par}
+\vfill
+{\large Working draft\par}
+\end{titlepage}
+
+\section*{A word before the problems}
+
+Thomas Leybourn published his collection in 1817, and it stops with the questions answered
+in 1816. This booklet takes up where he left off. It is made from a bound volume of ten
+issues, for 1816 to 1825, the 113th to the 122nd almanacs, digitised by Google Books. The
+new questions in it run from 1299 to 1447. None of them is in Leybourn. Charles Hutton
+edited the Diary until 1818, and Olinthus Gregory from 1819.
+
+Each issue printed the answers to the previous year's fifteen questions and set fifteen
+new ones. The answers to the questions set in 1825 appeared in 1826, in the next volume, and we
+have checked ours against them. Where we could not read a printed answer, the answer
+here is our own.
+
+\subsection*{Who was writing in}
+
+Some of the names are famous now. W.~G.~Horner of Bath, whose method of solving equations
+is still taught, set three questions. Hamnett Holditch of Lynn, later of Holditch's
+theorem, set the cylinders and cones of problem~\ref{w-holditch}. James Thomson,
+professor of mathematics in Belfast and the father of Lord Kelvin, set a question on
+series. The prize question for 1822 came from M.~Hachette, professor in the Faculty of
+Sciences in Paris. A W.~Marrat wrote from New York, and three questions came from a Mr Isaac
+Newton, of Lynn and then of Wisbech.
+
+Some are not famous at all. Problem~\ref{w-cone} was answered by Master F.~Wardle of
+Macclesfield, who, the editor tells us, ``has been entirely blind from his infancy; but
+has for some time evinced a decided turn for mathematical'' studies.
+
+And there were women, more than in any decade since the 1720s.
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item \textbf{Miss Mary Knight} of Boston, almost certainly Wormgate in Boston,
+Lincolnshire, set problem~\ref{w-knight} in 1817 and answered it herself. Her solution
+to the parabola of problem~\ref{w-parabola} was printed in 1817, and her name is in the
+solvers' lists through 1818.
+\item \textbf{Miss Susan Jackson} of Mile End, already a solver in Leybourn's last volume,
+set problem~\ref{w-jackson} and answered others.
+\item \textbf{Miss Sarah Ellis} answered in 1824. In 1825 she appears as \textbf{Mrs Sarah
+Clay}, ``formerly Miss S.~Ellis'', answering problems~\ref{w-sphere} and~\ref{w-godward}.
+One of the questions she answered was set by a G.~Ellis of Acomb, near York, perhaps a
+relation. Marriage, which seems to have ended Nancy Mason's mathematics thirty years
+earlier, did not end hers.
+\item \textbf{Miss Clara Clay} answered in 1823. In the lists of 1818 there are also a
+Miss Mary R---e and a Miss Mary West, perhaps Leybourn's Mary Weston of Gainsborough.
+\end{itemize}
+
+\subsection*{How to read the labels}
+
+\textit{Q1314} is the Diary's own question number. \textit{After Q1331} means the question
+has been retold; the answer at the back is then for the retelling. Yards, feet and inches
+stay, because the answers depend on them. The bands are those of the first book in this
+series; there is nothing young enough for Green or Blue. Mechanics goes in the last
+section, Beyond A-level.
+
+\subsection*{How this edition was made}
+This edition was prepared with the assistance of Claude, an AI model made by Anthropic.
+Under the editor's direction, Claude worked from Google Books' machine-read text of the
+volume. It drafted the retellings, solutions, notes and introduction, recomputed every
+answer, and typeset the text. Selection, editorial decisions and final responsibility for
+the text are the editor's.
+
+%================ AMBER ================
+\band{bandamber}{Amber}{ages 11--14}
+
+\prob{w-digits}{The square with a two-digit side}{Q1347, by William Burdon}
+The side of a square is a two-digit number. Dividing one digit by the other gives the same
+as subtracting one from the other. The square of the number times the square of the
+number written backwards is 1,016,064. What is the side?
+
+\prob{w-three}{Three numbers}{Q1419, by Henry Ward}
+Three numbers add up to 14. Take the differences between the first and second and
+between the second and third: these two differences differ by 5. The first times the
+third times the cube of the second is 270. Find the numbers.
+
+\prob{w-river}{Rowing against the stream}{Q1435, by Petrarch}
+A man rows down a river to a place and back again. Show that it takes him longer when
+the river flows than it would on still water, if he rows just as hard.
+
+%================ PINK ================
+\band{bandpink}{Pink}{ages 14--16}
+
+\prob{w-knight}{The cone with a slant of 10}{Q1314, by Miss Mary Knight}
+The slant side of a cone is 10, and its volume is 94.248. Find its height.
+
+\prob{w-excircle}{The circle outside the triangle}{Q1389, by John Collins}
+A circle touches the hypotenuse of a right-angled triangle and the other two sides
+extended. Show that its diameter equals the perimeter of the triangle.
+
+\prob{w-sixr}{Three points on a circle}{Q1391, by W.~Rutherford}
+Divide a circle into three equal arcs. Join the three points of division to any point on
+the circle. Show that the sum of the squares of the three lines is six times the square of
+the radius.
+
+\prob{w-arc}{The middle of the arc}{Q1405, by Thomas Baker}
+$AB$ is a chord of a circle, $H$ the midpoint of one of its arcs, and $C$ any point of
+that arc. Show that $AC\cdot CB + CH^2$ is the same wherever $C$ is.
+
+\prob{w-windows}{The rope across the street}{after Q1331, by William Burdon}
+Two windows face each other across a street 17 yards wide, one 3 yards higher than the
+other. The shortest rope that can be stretched from one window to the other, touching the
+street, is 39 yards long. How high are the windows?
+
+\prob{w-trees}{Two trees in an elliptical garden}{Q1395, by William Burdon}
+An elliptical garden has axes of 20 and 15 yards. At its two foci stand trees 8 and 10
+yards high. A rope runs from the top of one tree down to the edge of the garden and up to
+the top of the other. How short can it be?
+
+\prob{w-cone}{A cone whose volume equals its surface}{Q1404, by Joseph Gritton}
+The diameter of the base of a cone equals its slant side, and its volume is numerically
+equal to its whole surface, base included. Find its size.
+
+\prob{w-locus}{Dividing lines to a circle}{Q1426, by Isaac Newton of Lynn}
+From a fixed point $P$, draw a line $PC$ to any point $C$ of a given circle, and divide it
+at $E$ in a fixed ratio. Show that $E$ always lies on a circle.
+
+\prob{w-composite}{Ten numbers, none of them prime}{Q1422, by Investigator}
+Find ten consecutive whole numbers, none of which is prime, by a method that would work
+for any number of them.
+
+\prob{w-sphere}{The cone and the sphere inside it}{Q1423, by G.~Ellis}
+A cone has a volume of $96\pi \approx 301.5936$ cubic inches. Its centre of gravity is
+one inch farther from its vertex than the centre of the largest sphere that fits inside
+it. Find the cone and the sphere.
+
+%================ PURPLE ================
+\band{bandpurple}{Purple}{ages 16--17}
+
+\prob{w-parabola}{The length of a parabola}{Q1299, by George Brown}
+The curved length of a parabola, from one end of its base round to the other, is 24, and
+its latus rectum is 4. Find its area.
+
+\prob{w-golden}{A triangle in geometric progression}{Q1354, by Charon}
+Construct a right-angled triangle whose sides are in geometric progression, and find their
+ratio.
+
+\prob{w-log}{A number and its logarithm}{Q1359, by John Baines}
+Which number differs least from its common logarithm? Which differs least from its natural
+logarithm?
+
+\prob{w-holditch}{Cylinders and cones without end}{Q1338, by Hamnett Holditch}
+A cylinder whose diameter equals its height holds a cone with the same base and height.
+That cone holds a cylinder of half its height, standing on the same base; that cylinder
+holds a cone in the same way, and so on for ever. What do all the cylinders, and all the
+cones, hold together?
+
+\prob{w-ladder}{The sliding rod}{Q1401, by W.~Marrat}
+A rod of fixed length slides with its top against a vertical line and its foot on a
+horizontal line. Find the curve that all its positions touch.
+
+\prob{w-napoleon}{Three equilateral triangles}{Q1439, by W.~Rutherford}
+On the three sides of any triangle draw equilateral triangles, all outwards or all
+inwards. Show that their centres are the corners of an equilateral triangle.
+
+\prob{w-ellipses}{Two ellipses}{Q1436, by Isaac Newton of Wisbech}
+Two ellipses of the same shape have the same centre and their axes in line, one inside the
+other. Show that a tangent to the inner one cuts off a segment of the outer one whose area
+is always the same.
+
+\prob{w-horner}{A function that undoes itself}{Q1385, by W.~G.~Horner}
+For which $a$, $b$, $c$, $d$ does $f(x) = \dfrac{a+bx}{c+dx}$ satisfy $f(f(x)) = x$ for
+every $x$?
+
+\prob{w-sixn}{Primes of the form $6n\pm1$}{Q1356, by Henry Atkinson}
+Every prime above 3 has the form $6n+1$ or $6n-1$, but not every number of those forms is
+prime. Find for which $n$ the number $6n+1$ is composite, and the same for $6n-1$.
+
+\prob{w-grandi}{Divergent series}{Q1442, by Investigator}
+By a general method, find the sums of
+\[ 1 - 1 + 1 - 1 + \cdots, \qquad 1 + 0 - 1 + 1 + 0 - 1 + \cdots, \qquad
+1 + 0 + 0 - 1 + 1 + 0 + 0 - 1 + \cdots. \]
+
+%================ BEYOND ================
+\band{bandgrey}{Beyond A-level}{motion}
+
+\prob{w-jackson}{Two balls from a tower}{Q1316, by Miss Susan Jackson}
+A ball is dropped from the top of a tower. When it has fallen 30 feet, a second ball is
+let go from a point 80 feet below the top. Both reach the ground together. How high is the
+tower, and how long was the first ball falling? Take $g = 32\tfrac16$ feet per second per
+second.
+
+\prob{w-godward}{The quickest cone}{Q1429, by W.~Godward}
+Of all cones with the same volume, find the one down whose slant side a body slides from
+the vertex in the least time.
+
+\prob{w-bowl}{The ball in the bowl}{Q1396, by D.~T.~Sheridan}
+A smooth ball runs from rest at the rim down the inside of a polished hemispherical bowl.
+Where is its downward speed greatest?
+
+%================ ANSWERS ================
+\clearpage
+\section*{Answers}
+
+\ans{w-digits}{42. Its digits give $4\div2 = 2 = 4 - 2$, and $42\times24 = 1008$, whose
+square is 1,016,064. Henry Atkinson pointed out that the last condition cannot tell 42
+from 24, since the product is the same either way.}
+
+\ans{w-three}{1, 3 and 10. If the numbers are $x$, $y$, $z$, then $(z-y)-(y-x) = 5$ and
+$x+y+z = 14$ give $y = 3$ and $x + z = 11$, and $27xz = 270$ gives $xz = 10$. The editor
+printed no solution. Two readers had told him that Mr Ward had sent the same question to
+the \textit{Leeds Correspondent}, which had already answered it, and he wrote: ``We wonder
+it did not occur to Mr.~Ward that this procedure is inconsistent with the etiquette of
+periodical publications.''}
+
+\ans{w-river}{Let the distance be $d$, his speed in still water $v$ and the stream's $w$.
+The round trip takes $\dfrac d{v+w} + \dfrac d{v-w} = \dfrac{2dv}{v^2-w^2}$, which is
+more than $\dfrac{2d}v$ whenever $w \ne 0$. John Baines and ten others gave this in
+1826.}
+
+\ans{w-knight}{About 9.515. The radius is $\sqrt{100 - h^2}$, so
+$\tfrac\pi3(100 - h^2)h = 94.248 = 30\pi$, that is $h^3 - 100h + 90 = 0$. Miss Knight
+gave 9.51533. Thomas Weatherill noticed that the cubic has a second positive root,
+$h \approx 0.9075$: a flat cone with the same slant and volume.}
+
+\ans{w-excircle}{The circle is the excircle opposite the right angle $C$. With centre $O$,
+draw $OD$ and $OE$ to the extended legs; $ODCE$ is a square of side $r$. Tangents from $A$
+and $B$ give $AD + BE = AB$, so $2r = CD + CE = AC + AD + BC + BE$ is the perimeter. This
+was the proof of Master E.~P.~Cooper, a pupil at Wintringham.}
+
+\ans{w-sixr}{Put the circle's centre at the origin and the points of division at angles
+$\theta$, $\theta + 120^\circ$, $\theta + 240^\circ$. A point at angle $\phi$ is at squared
+distance $2r^2 - 2r^2\cos(\phi - \theta_k)$ from each, and the three cosines add up to
+zero. So the sum is $6r^2$. The Rev.~John Sampson noted that for any point at distance $d$
+from the centre the sum is $3(r^2 + d^2)$.}
+
+\ans{w-arc}{The constant is $AH^2$. Put $C$ at $A$ to see it. In general, if $HE$ is the
+diameter through $H$ and $G$ is the midpoint of $AB$, then $AC\cdot CB + CH^2 = HE\cdot HG
+= AH^2$. This was the answer of Mervyn Crawford, a pupil of Mr Herapath.}
+
+\ans{w-windows}{About 19.05 and 16.05 yards. Reflect the lower window in the street. The
+shortest rope then runs straight from the upper window to the image, so
+$39^2 = 17^2 + (h_1 + h_2)^2$ and $h_1 + h_2 = \sqrt{1232} \approx 35.10$. With
+$h_1 - h_2 = 3$, the heights follow. John Davey's printed answer is the same.}
+
+\ans{w-trees}{About 26.91 yards. If the rope reaches the edge at a point $d_1$ from one
+focus, it is $d_2 = 20 - d_1$ from the other, since the focal distances of an ellipse add
+up to the major axis. So the rope is $\sqrt{d_1^2 + 64} + \sqrt{d_2^2 + 100}$, least when
+$d_1 : d_2 = 8 : 10$, and then it is $\sqrt{20^2 + 18^2} = \sqrt{724} \approx 26.907$.
+J.~A.~Dotchen gave 26.907248, and remarked that the minor axis is not needed.}
+
+\ans{w-cone}{Base diameter $6\sqrt3 \approx 10.392$, height 9, volume
+$81\pi \approx 254.47$. With radius $r$, the slant is $2r$ and the height $r\sqrt3$; then
+$\tfrac\pi3r^2\cdot r\sqrt3 = \pi r^2 + 2\pi r^2$ gives $r = 3\sqrt3$. This was Master
+Wardle's answer.}
+
+\ans{w-locus}{Let $O$ be the centre and $PE : PC = m : n$. The map that sends each point $X$
+to the point dividing $PX$ in that ratio is an enlargement from $P$ with scale factor
+$m/n$. It sends the given circle to a circle whose centre divides $PO$ in the same ratio
+and whose radius is $m/n$ of the original. This was Anthony Cook's answer.}
+
+\ans{w-composite}{114 to 123. N.~J.~Andrew took the numbers $6n, 6n+1, \dots, 6n+9$; the
+only ones that can be prime are $6n+1$, $6n+5$ and $6n+7$, and he made them divisible by
+5, 7 and 11, which gives $n = 19$. A method for any length $k$: the numbers
+$(k+1)! + 2, \dots, (k+1)! + (k+1)$ are all composite. In fact 113 and 127 are primes with
+thirteen composites between them.}
+
+\ans{w-sphere}{There are two cones. The first has base radius 6 and height 8, with an
+inscribed sphere of radius 3. The second has base radius about 7.786 and height about
+4.751, with a sphere of radius about 2.188. In each, the centre of gravity is $\tfrac34h$
+from the vertex and the sphere's centre is $h - \rho$ from it, with
+$\rho = rh/(r + \sqrt{r^2+h^2})$. The proposer, G.~Ellis, and Mrs Sarah Clay found the
+first. For the second they gave radius 4.123 and height 16.96; see the grey box.}
+
+\ans{w-parabola}{About 80.07. Take the parabola as $y^2 = 4x$. The arc from the vertex to
+$(x, y)$ is $\int_0^y\sqrt{1 + t^2/4}\,dt$, and setting this equal to 12 gives
+$y \approx 6.2162$ and $x = y^2/4 \approx 9.660$. The area is $\tfrac43xy \approx 80.07$.
+J.~A.~Dotchen found 80.0616. Miss Mary Knight used a rule of thumb from Hutton's
+\textit{Mensuration}, which gave $x = 9$ and an area of 72. Dotchen pointed out that the
+rule fails when the ordinate is much greater than half the latus rectum, as here.}
+
+\ans{w-golden}{The sides go as $1 : \sqrt\varphi : \varphi$, where $\varphi = (1+\sqrt5)/2$,
+so the ratio is $\sqrt\varphi \approx 1.272$. If the sides are $a$, $aq$, $aq^2$, Pythagoras
+gives $q^4 = q^2 + 1$. The editor printed no solution, because most correspondents had
+recognised the question as Problem~39 of the appendix to Simpson's \textit{Algebra}. He
+added kindly: ``So many hundred questions have already been published in reference to the
+parts of plane triangles, that, unless a person reads and remembers every thing, he can
+scarcely avoid similarity to what has gone before.''}
+
+\ans{w-log}{$\log_{10}e \approx 0.4343$, and 1. The difference $x - \log_b x$ is least
+where $1 = 1/(x\ln b)$, that is at $x = 1/\ln b$, the modulus of the system. John Collins
+and Thomas Martin stated it in just this way.}
+
+\ans{w-holditch}{Each new cylinder has half the height and half the radius of the one
+before, so an eighth of its volume. If the first cylinder holds $V$, all the cylinders
+hold $V(1 + \tfrac18 + \tfrac1{64} + \cdots) = \tfrac87V$. Each cone is a third of its
+cylinder, so the cones hold $\tfrac8{21}V$, and everything together $\tfrac{32}{21}V$.
+Thomas Squire's printed answer is the same.}
+
+\ans{w-ladder}{An astroid, $x^{2/3} + y^{2/3} = l^{2/3}$ for a rod of length $l$. The rod's
+positions are the lines $x/\cos\theta + y/\sin\theta = l$. Differentiating with respect
+to $\theta$ and solving gives $x = l\cos^3\theta$, $y = l\sin^3\theta$. Several
+correspondents noted that this was Question 386 in the \textit{Gentleman's Mathematical
+Companion}, and the editor printed none of the solutions.}
+
+\ans{w-napoleon}{This is now called Napoleon's theorem. In complex numbers, with
+$\omega = e^{2\pi i/3}$, the centre of the equilateral triangle on $BC$ is
+$\tfrac13(B + C + A')$, where $A' = -\omega B - \omega^2C$ is its third vertex. A short
+calculation shows that the three centres $P$, $Q$, $R$ satisfy
+$P + \omega Q + \omega^2R = 0$, which is the condition for an equilateral triangle.
+In 1826 Thomas Burn and John Walker gave a proof by congruent triangles.}
+
+\ans{w-ellipses}{Squash the figure along the major axis until both ellipses become
+circles. A tangent to the inner circle cuts off a segment of the outer circle whose area
+depends only on the two radii. Squashing multiplies every area by the same factor, so the
+segments of the ellipses are all equal too. Isaac Brown and James Lugg proved it in 1826
+by fluxions.}
+
+\ans{w-horner}{Either $f(x) = x$ itself, or $c = -b$ with $a$ and $d$ arbitrary. Composing
+gives $f(f(x)) = \dfrac{a(b+c) + (b^2 + ad)x}{(c^2 + ad) + d(b+c)x}$, which is $x$ for
+every $x$ exactly when $(b+c)a = (b+c)d = 0$ and $b^2 = c^2$. Horner's own answer found
+all functions whose $n$th repeat is $x$, using a result from Euler.}
+
+\ans{w-sixn}{$6n+1$ is composite exactly when $n = 6pq + p + q$ or $n = 6pq - p - q$ for
+whole numbers $p, q \ge 1$, because its factors are both of the form $6k+1$ or both of the
+form $6k-1$. $6n-1$ is composite exactly when $n = 6pq + p - q$, from one factor of each
+kind. This was Henry Atkinson's own answer.}
+
+\ans{w-grandi}{$\tfrac12$, $\tfrac23$ and $\tfrac34$. Replace each term by the term
+times $x^k$ and let $x$ tend to 1. For the third, the series becomes
+$(1 - x^3)/(1 - x^4) \to \tfrac34$. In general a series with period $m$, $1, 0, \dots,
+0, -1$, sums to $(m-1)/m$. This is the same as averaging the partial sums. Such
+``sums'' were argued over from Leibniz to Euler. John Baines junior answered it in 1826 in exactly this way.}
+
+\ans{w-jackson}{About 100.8 feet and 2.50 seconds. After the first ball has fallen 30
+feet it moves faster than the second by the constant amount $v_0 = \sqrt{60g}$. It must
+make up the 50 feet between them, which takes $50/v_0$ seconds, in which the second ball
+falls $\tfrac12g(50/v_0)^2 = 2500/120 = 20\tfrac56$ feet, whatever $g$ is. So the tower is
+$100\tfrac56$ feet high. J.~A.~Dotchen gave 100.83 feet and 2.50388 seconds.}
+
+\ans{w-godward}{The height should be $\sqrt2$ times the radius of the base. Sliding from
+rest down a slant of length $s$ at height $h$ takes a time whose square is
+$2s^2/gh = 2(h^2 + r^2)/gh$. With $r^2h$ fixed, $h + r^2/h$ is least when $h^2 = 2r^2$.
+Several solvers, Mrs Sarah Clay among them, gave this; others used the fact that a body
+slides down every chord from the top of a vertical circle in the same time.}
+
+\ans{w-bowl}{At $35^\circ16'$ of arc below the rim, where the tangent of the angle is
+$1/\sqrt2$. At depth angle $\theta$ the speed is $\sqrt{2gR\sin\theta}$, directed along the
+bowl, and its downward part is $\sqrt{2gR\sin\theta}\cos\theta$, which is greatest when
+$\tan^2\theta = \tfrac12$. The Diary's answer gives the same arc.}
+
+\begin{diarynote}{When the Diary was wrong}
+\textbf{Problem~\ref{w-sphere}.} The second cone printed, radius 4.123 and height 16.96,
+satisfies the condition the other way round: its sphere's centre is an inch farther from
+the vertex than its centre of gravity. The second cone that fits the question as set has
+radius about 7.79 and height about 4.75.
+
+\textbf{Problem~\ref{w-parabola}.} J.~A.~Dotchen's area, 80.0616, is a little low; the true
+value is 80.066.
+\end{diarynote}
+
+\begin{diarynote}{Where the Diary simply worked differently}
+\textbf{Problem~\ref{w-parabola}.} Miss Knight's 72 is not a slip in her working. She used
+an approximate rule for the length of a parabola from Hutton's \textit{Mensuration},
+the standard book, which is good only for flat parabolas.
+
+\textbf{Problems~\ref{w-golden} and~\ref{w-ladder}.} Both had been published before, in
+Simpson's \textit{Algebra} and the \textit{Gentleman's Mathematical Companion}, and the
+editor said so.
+\end{diarynote}
+
+\vfill
+{\small Source: \textit{The Ladies' Diary} for 1816--1825, digitised by Google Books.}
+
+\end{document}
